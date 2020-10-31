@@ -1,6 +1,8 @@
 package com.company;
 
 
+import com.mysql.cj.log.Log;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -11,6 +13,8 @@ public class Main {
         String print = "Welcome to the Water Management System Console. Choose the function you want to perform";
 
         Scanner input = new Scanner(System.in).useDelimiter("\n");
+
+
 
         StringAlignUtils util = new StringAlignUtils(50, StringAlignUtils.Alignment.CENTER);
         System.out.println( util.format(print) );

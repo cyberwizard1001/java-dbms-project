@@ -11,25 +11,21 @@ public class database {
     public ResultSet Query(String query) throws SQLException
     {
 
+        ResultSet result = null;
         try(
                 Connection connection = DriverManager.getConnection(url,uname,pw);
 
                 Statement statement = connection.createStatement();
-                )
-        {
+                ) {
+
+            result = statement.executeQuery(query);
             System.out.println("Returning query");
-            return statement.executeQuery(query);
-            
+
+        }
+        finally {
+            return result;
         }
 
-        catch (SQLException exception)
-        {
-            exception.printStackTrace();
-        }
-
-        ResultSet res = null;
-        System.out.println("No query returned");
-        return res;
     }
 
     public void Update(String query) throws SQLException

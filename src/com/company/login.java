@@ -47,6 +47,9 @@ public class login {
                     if (password.equals(pass_input)) {
                         System.out.println("You've successfully logged in");
                         login = true;
+                        Public obj = new Public();
+
+                        obj.Main();
                     }
                 }
             }
