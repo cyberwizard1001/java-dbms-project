@@ -34,7 +34,7 @@ public class signup {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print("Enter username: ");
-                String query = "select username from login";
+                String query = "select username from account";
 
                 ResultSet result = statement.executeQuery(query);
 
@@ -67,7 +67,7 @@ public class signup {
 
             }
 
-            String query = "insert into login values ('" + user_input + "','" + password + "')";
+            String query = "insert into account values ('" + user_input + "','" + password + "')";
             System.out.print("Query: " + query);
 
             int rowsAffected = statement.executeUpdate(query);
