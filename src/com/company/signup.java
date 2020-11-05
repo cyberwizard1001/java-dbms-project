@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -23,19 +24,16 @@ public class signup {
 
             Scanner input = new Scanner(System.in).useDelimiter("\n");
 
-            String print = "Welcome to the Water Management System Registration Portal";
-
-            StringAlignUtils util = new StringAlignUtils(50, StringAlignUtils.Alignment.CENTER);
-            System.out.println(util.format(print));
-            System.out.print("\n\n\n");
-
+            ASCIIArtService.print();
             String user_input = "";
             String password = "";
 
             int ValidUsername = -1;
 
             while (ValidUsername == -1) {
-                System.out.println("Enter username: ");
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                System.out.print("Enter username: ");
                 String query = "select username from login";
 
                 ResultSet result = statement.executeQuery(query);
@@ -47,7 +45,7 @@ public class signup {
                 while ((result.next()) && (ValidUsername == 0)) {
                     String username = result.getString("username");
                     if (user_input.equals(username)) {
-                        System.out.println("Sorry, this username already exists. Try again. ");
+                        System.out.println("\nSorry, this username already exists. Try again. ");
                         ValidUsername = -1;
                     } else ValidUsername = 0;
                 }
@@ -59,7 +57,7 @@ public class signup {
             int validPassword = -1;
 
             while (validPassword == -1) {
-                System.out.println("Choose your password: ");
+                System.out.print("Choose your password: ");
 
                 password = input.next();
 
@@ -70,14 +68,21 @@ public class signup {
             }
 
             String query = "insert into login values ('" + user_input + "','" + password + "')";
-            System.out.println("Query: " + query);
+            System.out.print("Query: " + query);
 
             int rowsAffected = statement.executeUpdate(query);
 
 
             System.out.println(rowsAffected + " user successfully added.");
+            System.out.print("Press ENTER to continue: ");
+
+            System.in.read();
+
+            Main.main(null);
 
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 
