@@ -31,7 +31,7 @@ public class Main  extends ASCIIArtService {
         {
             case 1 : {
                 login obj = new login();
-                obj.Login();
+                obj.login_main();
                 break;
             }
 

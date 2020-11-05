@@ -5,6 +5,25 @@ import java.util.Scanner;
 
 public class login {
 
+    boolean login = false;
+    int err_count = 0;
+
+    public void login_main() throws SQLException {
+
+        ASCIIArtService.print();
+
+        while((!login)&&(err_count<3))
+        {
+            System.out.println("Login");
+            Login();
+            if(!login)
+            {
+                System.out.println("You have "+ (3-err_count) + " tries left.");
+            }
+
+        }
+    }
+
     public void Login() throws SQLException {
 
         String url = "jdbc:mysql://localhost:3306/project_trial";
@@ -17,10 +36,10 @@ public class login {
 
                 //step 2 - create a statement object
 
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
                 //task for self - learn how to use prepared statements
         ) {
-            String query = "select * from login";
+            String query = "select username,password from account";
             System.out.println("Statement: " + query);
 
             //step 3 - create a result object and perform a query
@@ -32,31 +51,37 @@ public class login {
             String pass_input;
 
             Scanner input = new Scanner(System.in).useDelimiter("\n");
-            boolean login = false;
 
             System.out.print("Enter username: ");
             user_input = input.next();
             System.out.print("Enter password: ");
             pass_input = input.next();
 
-            while (result.next()) {
-                String username = result.getString("username");
-                String password = result.getString("password");
 
-                if (username.equals(user_input)) {
-                    if (password.equals(pass_input)) {
-                        System.out.println("You've successfully logged in");
-                        login = true;
-                        Public obj = new Public();
 
-                        obj.Main();
+                while (result.next()) {
+                    String username = result.getString("username");
+                    String password = result.getString("password");
+
+                    if (username.equals(user_input)) {
+                        if (password.equals(pass_input)) {
+                            System.out.println("You've successfully logged in");
+                            login = true;
+                            Public obj = new Public();
+
+                            obj.Main();
+                        }
                     }
                 }
-            }
 
-            if (!login) {
-                System.out.println("Please try again, your credentials are wrong");
-            }
+                if (!login) {
+                    System.out.println("Please try again, your credentials are wrong");
+                    err_count++;
+
+                }
+
+
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
