@@ -62,14 +62,51 @@ public class login {
                 while (result.next()) {
                     String username = result.getString("username");
                     String password = result.getString("password");
+                    String type = result.getString("type");
 
                     if (username.equals(user_input)) {
                         if (password.equals(pass_input)) {
                             System.out.println("You've successfully logged in");
                             login = true;
-                            Public obj = new Public();
 
-                            obj.Main();
+                            if(type.equals("admin"))
+                            {
+                                Admin obj = new Admin();
+                                obj.Console();
+                            }
+
+                            else if(type.equals("finance"))
+                            {
+                                Finance obj = new Finance();
+                                obj.Console();
+                            }
+
+                            else if(type.equals("wre"))
+                            {
+                                ResourceE obj = new ResourceE();
+                                obj.Console();
+                            }
+
+                            else if(type.equals("project"))
+                            {
+                                ProjectE obj = new ProjectE();
+                                obj.Console();
+                            }
+
+                            else if(type.equals("sysadmin"))
+                            {
+                                SystemsE obj = new SystemsE();
+                                obj.Console();
+                            }
+
+                            else
+                            {
+                                Public obj = new Public();
+                                obj.Console();
+                            }
+
+
+
                         }
                     }
                 }
