@@ -1,91 +1,84 @@
 package com.company;
 
-import java.io.IOException;
-import java.sql.*;
+
+import javax.xml.transform.Result;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
-public class signup {
+public class signup extends database {
 
     public void SignUp() throws SQLException {
 
-        String url = "jdbc:mysql://localhost:3306/project_trial";
-        String pw = "n";
-        String user = "root";
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
 
-        //step 1 - create a connection object to connect to the db in question - project]
-        try (
-                Connection connection = DriverManager.getConnection(url, user, pw);
+        String print = "Welcome to the Water Management System Registration Portal";
 
-                //step 2 - create a statement object
+        StringAlignUtils util = new StringAlignUtils(50, StringAlignUtils.Alignment.CENTER);
+        System.out.println( util.format(print) );
+        System.out.print("\n\n\n");
 
-                Statement statement = connection.createStatement();
+        String user_input = "";
+        String password = "";
 
-        ) {
+        int ValidUsername = -1;
 
-            Scanner input = new Scanner(System.in).useDelimiter("\n");
+        while(ValidUsername==-1)
+        {
+            System.out.println("Enter username: ");
+            String query = "select username from login";
 
-            ASCIIArtService.print();
-            String user_input = "";
-            String password = "";
+            ResultSet result;
+            result = Query(query);
 
-            int ValidUsername = -1;
+            user_input = input.next();
 
-            while (ValidUsername == -1) {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-                System.out.print("Enter username: ");
-                String query = "select username from account";
+            ValidUsername = 0;
 
-                ResultSet result = statement.executeQuery(query);
-
-                user_input = input.next();
-
-                ValidUsername = 0;
-
-                while ((result.next()) && (ValidUsername == 0)) {
-                    String username = result.getString("username");
-                    if (user_input.equals(username)) {
-                        System.out.println("\nSorry, this username already exists. Try again. ");
-                        ValidUsername = -1;
-                    } else ValidUsername = 0;
+            while((result.next())&&(ValidUsername==0))
+            {
+                String username = result.getString("username");
+                if(user_input.equals(username))
+                {
+                    System.out.println("Sorry, this username already exists. Try again. ");
+                    ValidUsername = -1;
                 }
 
+                else ValidUsername = 0;
             }
 
-            System.out.println("The username " + user_input + " is available");
-
-            int validPassword = -1;
-
-            while (validPassword == -1) {
-                System.out.print("Choose your password: ");
-
-                password = input.next();
-
-                if (password.length() < 8) {
-                    System.out.println("Password should have a minimum of 8 characters. Please try again.");
-                } else validPassword = 0;
-
-            }
-
-            String query = "insert into account values ('" + user_input + "','" + password + "')";
-            System.out.print("Query: " + query);
-
-            int rowsAffected = statement.executeUpdate(query);
-
-
-            System.out.println(rowsAffected + " user successfully added.");
-            System.out.print("Press ENTER to continue: ");
-
-            System.in.read();
-
-            Main.main(null);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
+        System.out.println("The username "+user_input+ " is available");
+
+        int validPassword = -1;
+
+        while(validPassword==-1)
+        {
+            System.out.println("Choose your password: ");
+
+            password = input.next();
+
+            if(password.length()<8)
+            {
+                System.out.println("Password should have a minimum of 8 characters. Please try again.");
+            }
+
+            else validPassword = 0;
+
+        }
+
+        String query = "insert into login values ('"+user_input+"','"+password+"')";
+    System.out.println("Query: "+query);
+
+    InsertInto(query);
+
+    System.out.println("User successfully added.");
+
 
 
     }
+
+
 }
 

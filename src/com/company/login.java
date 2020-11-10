@@ -39,7 +39,7 @@ public class login {
                 Statement statement = connection.createStatement()
                 //task for self - learn how to use prepared statements
         ) {
-            String query = "select username,password from account";
+            String query = "select username,password,type from account";
             System.out.println("Statement: " + query);
 
             //step 3 - create a result object and perform a query
@@ -95,7 +95,7 @@ public class login {
 
                             else if(type.equals("sysadmin"))
                             {
-                                SystemsE obj = new SystemsE();
+                                SystemsE obj = new SystemsE(username);
                                 obj.Console();
                             }
 
