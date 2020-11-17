@@ -67,7 +67,8 @@ create table purification (
 create table account(
     username varchar(50) primary key,
     name varchar(50),
-    password varchar(50)
+    password varchar(50),
+    type varchar(50)
 );
 
 create table public(
