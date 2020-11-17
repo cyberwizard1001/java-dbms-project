@@ -3,15 +3,6 @@ create schema project_trial;
 
 use project_trial;
 
-create table login(
-    username varchar(45),
-    password varchar(45)
-);
-
-insert into login values ('nirmalk','password');
-
-select * from login;
-
 create table source (
     source_id varchar(50),
     name varchar(50)
@@ -149,4 +140,12 @@ create table public_payment(
     transaction_id varchar(50),
     foreign key (transaction_id) references payment(transaction_id),
     foreign key (username) references account(username)
+);
+
+create table connection_req(
+    connection_id varchar(50),
+    type varchar(50),
+    status varchar(50),
+    location_id varchar(50),
+    primary key (connection_id)
 );
