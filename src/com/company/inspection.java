@@ -37,13 +37,13 @@ public class inspection {
                         if ((contamination <= con_max) && (contamination >= con_min)) {
                             continue;
                         } else {
-                            System.out.println("Source ID with invalid pH value: ");
+                            System.out.println("Source ID with invalid pH value: "+result.getString("source_id"));
                         }
                     } else {
-                        System.out.println("Source ID with invalid PPM: ");
+                        System.out.println("Source ID with invalid PPM: "+result.getString("source_id"));
                     }
                 } else {
-                    System.out.println("Source ID with high Contamination: ");
+                    System.out.println("Source ID with high Contamination: "+result.getString("source_id")1);
                 }
             }
         } catch (SQLException ex) {
