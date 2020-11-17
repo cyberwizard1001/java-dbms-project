@@ -1,6 +1,4 @@
 create schema project_trial;
-
-
 use project_trial;
 
 create table source (
@@ -149,3 +147,6 @@ create table connection_req(
     location_id varchar(50),
     primary key (connection_id)
 );
+
+insert into account values ('wre1','Ram','pwdwre1','wre');
+insert into property values ('R123','2020-11-17',6.4,400,2);
