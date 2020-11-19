@@ -31,7 +31,7 @@ public class inspection {
 
             while (result.next()){
                 String source_id= result.getString("source_id");
-                double ph_level = result.getInt("ph_level");
+                double ph_level = result.getDouble("ph_level");
                 int contamination = result.getInt("contamination_level");
                 Date date = result.getDate("inspection_date");
 
