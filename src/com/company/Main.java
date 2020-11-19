@@ -9,7 +9,7 @@ public class Main  extends ASCIIArtService {
 
     public static void main(String[] args) throws SQLException {
 
-        ASCIIArtService.print();
+    /*    ASCIIArtService.print();
         String print = "Welcome to the Water Management System Console. Choose the         option relating to what you want to do";
 
         Scanner input = new Scanner(System.in).useDelimiter("\n");
@@ -41,6 +41,13 @@ public class Main  extends ASCIIArtService {
                 break;
             }
         }
+
+    }
+
+
+     */
+        inspection Obj = new inspection();
+                Obj.inspect();
 
     }
 }
