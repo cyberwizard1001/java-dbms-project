@@ -83,7 +83,7 @@ public class login {
 
                             else if(type.equals("wre"))
                             {
-                                ResourceE obj = new ResourceE();
+                                ResourceE obj = new ResourceE(username);
                                 obj.Console();
                             }
 

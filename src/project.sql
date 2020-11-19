@@ -148,5 +148,13 @@ create table connection_req(
     primary key (connection_id)
 );
 
+//data
 insert into account values ('wre1','Ram','pwdwre1','wre');
 insert into property values ('R123','2020-11-17',6.4,400,2);
+insert into property values ('D317','2020-09-13',7.7,500,1);
+insert into property values ('R123','2020-08-21',7.9,420,2.5);
+insert into property values ('D317','2020-10-21',7.7,700,4.7);
+insert into property values ('R745','2020-11-17',7.8,450,3);
+insert into  property values ('R908','2020-09-14',8.9,430,4.5);
+insert into property values ('D635','2020-07-09',5.6,459,5);
+insert into property values  ('');
