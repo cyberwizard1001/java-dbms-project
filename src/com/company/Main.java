@@ -47,8 +47,10 @@ public class Main  extends ASCIIArtService {
 
 
      */
-        SystemsE Obj = new SystemsE("Nirmal K");
-                Obj.Console();
+        //SystemsE Obj = new SystemsE("Nirmal K");
+        ResourceE engineer = new ResourceE("Rithika ");
+                //Obj.Console();
+        engineer.Console();
 
     }
 }
