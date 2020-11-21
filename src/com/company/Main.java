@@ -2,12 +2,13 @@ package com.company;
 
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main  extends ASCIIArtService {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
 
     /*    ASCIIArtService.print();
         String print = "Welcome to the Water Management System Console. Choose the         option relating to what you want to do";
@@ -46,8 +47,8 @@ public class Main  extends ASCIIArtService {
 
 
      */
-        inspection Obj = new inspection();
-                Obj.inspect();
+        SystemsE Obj = new SystemsE("Nirmal K");
+                Obj.Console();
 
     }
 }

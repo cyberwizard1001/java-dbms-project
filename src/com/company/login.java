@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -119,7 +120,7 @@ public class login {
 
 
 
-        } catch (SQLException ex) {
+        } catch (SQLException | IOException ex) {
             ex.printStackTrace();
         }
 
