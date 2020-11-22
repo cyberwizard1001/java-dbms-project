@@ -1,14 +1,6 @@
 package com.company;
 
-//What is your database password? You have to specify that in the config section of the db connection sequence
-I havent kept the pwd yet
-//can you set the root password as 'n'? Then this code will work out of the box
-ok ill do that
-//cool. Wait
-//Wait do you haev SQL...?
-// yup i have
-//Frontend?
-// my sql workbench??
+
 
 import java.util.Scanner;
 
