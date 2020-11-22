@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
 
-public class login {
+public class    login {
 
     boolean login = false;
     int err_count = 0;

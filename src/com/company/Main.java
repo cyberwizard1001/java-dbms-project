@@ -27,15 +27,13 @@ public class Main  extends ASCIIArtService {
         System.out.print("\n\nMake your choice: ");
         int choice = input.nextInt();
 
-        switch (choice)
-        {
-            case 1 : {
+        switch (choice) {
+            case 1 -> {
                 login obj = new login();
                 obj.login_main();
                 break;
             }
-
-            case 2:{
+            case 2 -> {
                 signup obj = new signup();
                 obj.SignUp();
                 break;
