@@ -149,3 +149,11 @@ create table public_payment(
     foreign key (transaction_id) references payment(transaction_id),
     foreign key (username) references account(username)
 );
+
+create table project_tier(
+    project_id char(50) primary key,
+    project_status varchar(100),
+    budget number (20),
+    emp_id varchar(50),
+    foreign key (emp_id) references employee(emp_id),
+);
