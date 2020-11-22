@@ -2,7 +2,7 @@ package com.company;
 
 import java.sql.*;
 
-public class JBDC {
+public class JBDC{
       // Save as "JdbcSelectTest.java" (JDK 7 and above)
         public static void main(String[] args) {
             try (

@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -83,7 +84,7 @@ public class login {
 
                             else if(type.equals("wre"))
                             {
-                                ResourceE obj = new ResourceE();
+                                ResourceE obj = new ResourceE(username);
                                 obj.Console();
                             }
 
@@ -119,7 +120,7 @@ public class login {
 
 
 
-        } catch (SQLException ex) {
+        } catch (SQLException | IOException ex) {
             ex.printStackTrace();
         }
 

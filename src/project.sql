@@ -70,7 +70,7 @@ create table account(
     password varchar(50)
 );
 
-create table 'public'(
+create table public(
     username varchar(50),
     no_of_connections numeric(2,0),
     door_num varchar(50),
@@ -148,12 +148,4 @@ create table public_payment(
     transaction_id varchar(50),
     foreign key (transaction_id) references payment(transaction_id),
     foreign key (username) references account(username)
-);
-
-create table project_tier(
-    project_id char(50) primary key,
-    project_status varchar(100),
-    budget numeric(20),
-    emp_id varchar(50),
-    foreign key (emp_id) references employee(emp_id),
 );
