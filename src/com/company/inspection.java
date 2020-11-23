@@ -6,9 +6,9 @@ import java.util.Date;
 //uses property relation
 public class inspection {
     //static data members
-        private static final double ph_min = 6.5;
-        private static final double ph_max = 8.5;
-        private static final double con_max = 4.23;
+    private static final double ph_min = 6.5;
+    private static final double ph_max = 8.5;
+    private static final double con_max = 4.23;
 
     public void inspect() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";
