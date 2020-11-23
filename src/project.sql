@@ -157,4 +157,6 @@ insert into property values ('D317','2020-10-21',7.7,700,4.7);
 insert into property values ('R745','2020-11-17',7.8,450,3);
 insert into  property values ('R908','2020-09-14',8.9,430,4.5);
 insert into property values ('D635','2020-07-09',5.6,459,5);
-insert into property values  ('');
+insert into property values  ('R742','2020-07-07',4,346,3.3);
+insert into property values ('R908','2020-11-29',7.8,400,3);
+select * from property order by source_id and inspection_date;
