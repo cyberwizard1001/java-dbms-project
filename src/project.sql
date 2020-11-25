@@ -164,3 +164,14 @@ insert into property values ('D111','2020-06-05',6.9,487,4.12);
 select * from property order by source_id,inspection_date desc;
 alter table property modify contamination_level numeric(3,2);
 truncate table property;
+
+
+create table complaints(
+    username varchar(50),
+    complaint_id varchar(50),
+    issue varchar(50),
+    complaint_status varchar(50),
+    date_reg date,
+    primary key (complaint_id),
+    foreign key (username) references public(username)
+);
