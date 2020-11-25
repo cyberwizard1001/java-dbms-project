@@ -1,14 +1,16 @@
 package com.company;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Purchase implements Employee{
 
-
+    String username;
     String emp_id;
+
+    public Purchase(String username)
+    {
+        this.username = username;
+    }
 
     public void find_emp_id(String username)
     {
@@ -51,8 +53,16 @@ public class Purchase implements Employee{
         }
     }
 
-    public void make_request(){
+    public void make_request() throws SQLException {
 
+        ASCIIArtService.print();
+        String print = "Purchase request";
+        StringAlignUtils util = new StringAlignUtils(59, StringAlignUtils.Alignment.CENTER);
+        System.out.println( "\n\t\t" + util.format(print) );
+        System.out.print("\n");
+
+        find_emp_id(username);
+        System.out.println("Welcome, " + username + "(" + emp_id + ")");
 
 
     }
