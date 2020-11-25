@@ -36,8 +36,7 @@ public class ResourceE implements employee {
         }
     }
 
-    public void Console()
-    {
+    public void Console() throws SQLException {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");
         System.out.print("Welcome back "+(name)+"!");
@@ -45,7 +44,7 @@ public class ResourceE implements employee {
         System.out.println("(1)Inspect Water Source ");
         System.out.println("(2)View Complaints assigned to me ");
         System.out.println("(3)Get details on Waste-water treatment plants ");
-        System.out.println("(4)Back to Home ");
+        System.out.println("(4)Sign out ");
 
         System.out.print("\n\nWhat work do you have? : ");
         int work = input.nextInt();
@@ -54,7 +53,7 @@ public class ResourceE implements employee {
             case 1:
                 inspection inspect_obj = new inspection();
                 try {
-                    inspect_obj.inspect();
+                    inspect_obj.inspect(username,name);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -64,11 +63,15 @@ public class ResourceE implements employee {
                 find_emp_id(username);
                 complaint complaint_obj = new complaint();
                 try {
-                    complaint_obj.assignedtome(emp_id);
+                    complaint_obj.assignedtome(emp_id,username,name);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
                 break;
+
+            case 4:
+                login login_obj= new login();
+                login_obj.Login();
 
             default:
                 System.out.println("invalid chose!");

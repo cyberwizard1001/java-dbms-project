@@ -10,7 +10,7 @@ public class inspection {
     private static final double ph_max = 8.5;
     private static final double con_max = 3.77;
 
-    public void inspect() throws SQLException {
+    public void inspect(String username,String name) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -75,6 +75,8 @@ public class inspection {
                 }
                 j+=1;
             }
+            ResourceE resource_obj= new ResourceE(username,name);
+            resource_obj.Console();
     } catch (SQLException ex) {
             ex.printStackTrace();
         }
