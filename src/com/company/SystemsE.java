@@ -16,12 +16,14 @@ import java.util.Scanner;
 public class SystemsE {
 
     String name;
+    String username;
 
 
 
-    public SystemsE(String user)
+    public SystemsE(String user, String username)
     {
         name = user;
+        this.username = username;
 
     }
 

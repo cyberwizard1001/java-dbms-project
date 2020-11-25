@@ -97,7 +97,7 @@ public class    login {
 
                             else if(type.equals("sysadmin"))
                             {
-                                SystemsE obj = new SystemsE(username);
+                                SystemsE obj = new SystemsE(username,name);
                                 obj.Console();
                             }
 
