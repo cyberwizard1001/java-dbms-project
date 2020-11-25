@@ -237,5 +237,8 @@ create table complaints(
 );
 alter table complaints add assigned_to varchar(50);
 alter table complaints add foreign key (assigned_to) references engineer(emp_id);
-
+alter table employee add foreign key (username) references account(username);
+alter table employee drop column name;
+insert into account values ('wre1','Ram','pwdwre1','wre');
+insert into employee values ('wre1','empwre1','55000','1997-09-07','2019-03-28');
 select * from employee;
