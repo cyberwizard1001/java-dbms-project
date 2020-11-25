@@ -237,8 +237,15 @@ create table complaints(
 );
 alter table complaints add assigned_to varchar(50);
 alter table complaints add foreign key (assigned_to) references engineer(emp_id);
-alter table employee add foreign key (username) references account(username);
 alter table employee drop column name;
 insert into account values ('wre1','Ram','pwdwre1','wre');
 insert into employee values ('wre1','empwre1','55000','1997-09-07','2019-03-28');
 select * from employee;
+select * from engineer;
+select * from complaints;
+select * from account;
+insert into engineer values ('empwre1','wre');
+insert into account values ('public1','Arya','pwdpub1','public');
+insert into public values ('public1',13,2,'VKK Menon Road','Gandhipuram');
+insert into complaints values ('public1','c1','ground water contamination','pending','2020-06-23','empwre1');
+insert into complaints values ('public1','c2','unlicensed industry','pending','2020-11-02','empwre1');

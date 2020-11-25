@@ -13,11 +13,13 @@ public class ResourceE implements Employee{
     {
         this.username=username;
         this.name = name;
+        emp_id=" ";
     }
     public void find_emp_id(String person){
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
+        System.out.println("hi!");
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
                 Statement statement = connection.createStatement()
@@ -25,10 +27,12 @@ public class ResourceE implements Employee{
             String query1 = "select * from employee";
             ResultSet result = statement.executeQuery(query1);
             while(result.next()){
+                System.out.println("hi!");
                 String username=result.getString("username");
                 String emp_id=result.getString("emp_id");
-                if(person==username){
+                if(person.equals(username)){
                     this.emp_id= emp_id;
+                    System.out.println("hi!");
                 }
             }
         } catch (SQLException ex) {
@@ -62,8 +66,13 @@ public class ResourceE implements Employee{
 
             case 2:
                 find_emp_id(username);
-                complaint complaint_obj = new complaint(emp_id);
-                complaint_obj.assignedtome();
+                System.out.println("hi22!");
+                complaint complaint_obj = new complaint();
+                try {
+                    complaint_obj.assignedtome(emp_id);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
                 break;
 
             default:
