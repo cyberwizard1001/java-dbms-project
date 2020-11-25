@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class ResourceE {
     String name;
-    public ResourceE(String name)
+    String username;
+    public ResourceE(String username, String name)
     {
+        this.username=username;
          this.name = name;
     }
 
@@ -25,15 +27,20 @@ public class ResourceE {
         System.out.print("\n\nWhat work do you have? : ");
         int work = input.nextInt();
 
-        if(work==1){
-            inspection inspect_obj = new inspection();
-            try {
-                inspect_obj.inspect();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        else{
+        switch (work){
+            case 1:
+                inspection inspect_obj = new inspection();
+                try {
+                    inspect_obj.inspect();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+            case 2:
+                complaint complaint_obj = new complaint();
+                complaint_obj.assignedtome();
+
+            default:
                 System.out.println("invalid chose!");
             }
         }

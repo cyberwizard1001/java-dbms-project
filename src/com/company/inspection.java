@@ -5,7 +5,7 @@ import java.util.Date;
 
 //uses property relation
 public class inspection {
-    //static data members
+    //static final data members
     private static final double ph_min = 6.5;
     private static final double ph_max = 8.5;
     private static final double con_max = 3.77;

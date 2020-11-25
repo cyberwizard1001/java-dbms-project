@@ -69,6 +69,7 @@ public class    login {
                         if (password.equals(pass_input)) {
                             System.out.println("You've successfully logged in");
                             login = true;
+                            String name = result.getString("name");
 
                             if(type.equals("admin"))
                             {
@@ -84,7 +85,7 @@ public class    login {
 
                             else if(type.equals("wre"))
                             {
-                                ResourceE obj = new ResourceE(username);
+                                ResourceE obj = new ResourceE(username,name);
                                 obj.Console();
                             }
 

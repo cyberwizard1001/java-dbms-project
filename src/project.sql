@@ -175,3 +175,5 @@ create table complaints(
     primary key (complaint_id),
     foreign key (username) references public(username)
 );
+alter table complaints add assigned_to varchar(50);
+alter table complaints add foreign key (assigned_to) references engineer(emp_id);
