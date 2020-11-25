@@ -15,15 +15,12 @@ public class complaint {
             String query1 = "select * from complaints";
             ResultSet result = statement.executeQuery(query1);
 
-            String assigned_to=result.getString("assigned_to");
             int c=0;
-
-
             while(result.next()){
-
+                String assigned_to=result.getString("assigned_to");
                 if(assigned_to.equals(emp_id)){
                     c=c+1;
-                    System.out.println("("+c+")"+result.getString("complaint_id"+" "));
+                    System.out.println("("+c+") "+assigned_to);
                 }
             }
             result.close();
