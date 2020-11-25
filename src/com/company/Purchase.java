@@ -2,7 +2,7 @@ package com.company;
 
 import java.sql.*;
 
-public class Purchase implements Employee{
+public class Purchase implements employee {
 
     String username;
     String emp_id;
