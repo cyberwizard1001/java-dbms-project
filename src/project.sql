@@ -100,7 +100,7 @@ create table engineer(
     branch varchar(50),
     foreign key (emp_id) references employee(emp_id),
     primary key (emp_id)
-)
+);
 
 create table key_card(
     keycard_id varchar(50),
@@ -149,7 +149,7 @@ create table connection_req(
     primary key (connection_id)
 );
 
-//data
+/*data*/
 insert into account values ('wre1','Ram','pwdwre1','wre');
 insert into property values ('R123','2020-11-17',6.4,400,2);
 insert into property values ('D317','2020-09-13',7.7,500,1);
@@ -164,3 +164,62 @@ insert into property values ('D111','2020-06-05',6.9,487,4.12);
 select * from property order by source_id,inspection_date desc;
 alter table property modify contamination_level numeric(3,2);
 truncate table property;
+
+create table budget_and_tally(
+    emp_id varchar(50),
+    tally_id varchar(50),
+    allotted_amount int,
+    expenditure int,
+    primary key (tally_id)
+);
+
+
+
+create table project(
+    project_id varchar(50),
+    emp_id varchar(50),
+    project_name varchar(50),
+    approval varchar(50),
+    start_date date,
+    due_date date,
+    primary key (project_id),
+    foreign key (emp_id) references employee(emp_id)
+);
+
+create table complaint_resolution(
+    username varchar(50),
+    project_id varchar(50),
+    solution varchar(100),
+    foreign key (project_id) references project(project_id),
+    primary key (project_id)
+);
+
+create table development_project(
+    project_id varchar(50),
+    description varchar(100),
+    foreign key (project_id) references project(project_id)
+);
+
+create table purchase(
+    purchase_id varchar(50),
+    emp_id varchar(50),
+    procurement_date date,
+    issue_date date,
+    status varchar(50),
+    foreign key (emp_id) references employee(emp_id),
+    primary key (purchase_id)
+    );
+
+create table inventory(
+    purchase_id varchar(50),
+    serial_no varchar(50),
+    num_prod int,
+    spec varchar(100),
+    prod_name varchar(50),
+    upgrade date,
+    price int,
+    primary key (serial_no),
+    foreign key (purchase_id) references purchase(purchase_id)
+);
+
+
