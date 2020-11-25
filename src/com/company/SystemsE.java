@@ -2,7 +2,6 @@ package com.company;
 
 
 
-import javax.xml.transform.Result;
 import java.awt.*;
 import java.net.URI;
 import java.sql.*;
@@ -14,7 +13,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 
-public class SystemsE implements Employee{
+public class SystemsE implements employee {
 
     String name;
     String username;

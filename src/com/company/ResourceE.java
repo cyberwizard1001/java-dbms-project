@@ -1,11 +1,10 @@
 package com.company;
 
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.Scanner;
 import java.sql.*;
 
-public class ResourceE implements Employee{
+public class ResourceE implements employee {
     String name;
     String username;
     String emp_id;
