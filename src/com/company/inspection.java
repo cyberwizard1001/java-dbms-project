@@ -8,7 +8,7 @@ public class inspection {
     //static data members
     private static final double ph_min = 6.5;
     private static final double ph_max = 8.5;
-    private static final double con_max = 4.23;
+    private static final double con_max = 3.77;
 
     public void inspect() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";
@@ -18,9 +18,7 @@ public class inspection {
                 Connection connection = DriverManager.getConnection(url, user, pw);
                 Statement statement = connection.createStatement()
         ) {
-            int con_count = 0;
-            int ph_count = 0;
-            String query1 = "select * from property order by source_id and inspection_date";
+            String query1 = "select * from property";
             ResultSet result = statement.executeQuery(query1);
 
             int count=0;
@@ -33,7 +31,7 @@ public class inspection {
             float con[]= new float[count];
             Date date[]= new Date[count];
 
-            String query2 = "select * from property order by source_id and inspection_date";
+            String query2 = "select * from property order by source_id,inspection_date desc";
             ResultSet result1 = statement.executeQuery(query2);
 
             for (int i=0;result1.next();i++){
@@ -41,19 +39,42 @@ public class inspection {
                 date[i]=result1.getDate("inspection_date");
                 ph[i]=result1.getFloat("ph_level");
                 con[i]=result1.getFloat("contamination_level");
-                System.out.println(source_id[i]+" "+ph[i]+" "+con[i]+" "+date[i]);
+            }
+            System.out.println("Sources with inappropriate ph_level: ");
+            int j=0;
+            while(j<count){
+                int k=j+1,match=0;
+                while(k<count && match==0){
+                    if(source_id[j]!=source_id[k]){
+                        if(ph[j]<ph_min || ph[j]>ph_max) {
+                            System.out.println(source_id[j] + " " + ph[j]);
+                            match = 1;
+                        }
+                    }else{
+                        continue;
+                    }
+                    k+=1;
+                }
+                j+=1;
             }
 
-           /* for(int j=0;j<count;j++){
-
-                ;
-            }*/
-
-
-
-
-
-
+            System.out.println("Sources with high contamination level: ");
+            j=0;
+            while(j<count){
+                int k=j+1,match=0;
+                while(k<count && match==0){
+                    if(source_id[j]!=source_id[k]){
+                        if(con[j]>con_max) {
+                            System.out.println(source_id[j] + " " + con[j]);
+                            match = 1;
+                        }
+                    }else{
+                        continue;
+                    }
+                    k+=1;
+                }
+                j+=1;
+            }
     } catch (SQLException ex) {
             ex.printStackTrace();
         }

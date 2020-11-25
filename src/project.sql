@@ -31,6 +31,7 @@ create table property(
     primary key (source_id,inspection_date)
 );
 
+
 create table area(
     location_id varchar(50),
     dam_id varchar(50),
@@ -159,4 +160,7 @@ insert into  property values ('R908','2020-09-14',8.9,430,4.5);
 insert into property values ('D635','2020-07-09',5.6,459,5);
 insert into property values  ('R742','2020-07-07',4,346,3.3);
 insert into property values ('R908','2020-11-29',7.8,400,3);
-select * from property order by source_id and inspection_date;
+insert into property values ('D111','2020-06-05',6.9,487,4.12);
+select * from property order by source_id,inspection_date desc;
+alter table property modify contamination_level numeric(3,2);
+truncate table property;
