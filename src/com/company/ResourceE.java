@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class ResourceE {
+public class ResourceE extends employee{
     String name;
     String username;
     public ResourceE(String username, String name)
@@ -35,10 +35,13 @@ public class ResourceE {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
+                break;
 
             case 2:
-                complaint complaint_obj = new complaint();
+                String emp_id=getempid(username);
+                complaint complaint_obj = new complaint(emp_id);
                 complaint_obj.assignedtome();
+                break;
 
             default:
                 System.out.println("invalid chose!");

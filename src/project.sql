@@ -61,6 +61,7 @@ create table account(
     type varchar(50)
 );
 
+
 create table public(
     username varchar(50),
     no_of_connections numeric(2,0),
@@ -236,3 +237,5 @@ create table complaints(
 );
 alter table complaints add assigned_to varchar(50);
 alter table complaints add foreign key (assigned_to) references engineer(emp_id);
+
+select * from employee;

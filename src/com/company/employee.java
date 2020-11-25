@@ -1,15 +1,11 @@
 package com.company;
 
 import java.sql.*;
-import java.util.Date;
 
-public class complaint {
-    public String emp_id;
-    public complaint(String emp_id){
-      this.emp_id=emp_id;
-    }
+public class employee extends account{
+    public String emp;
 
-    public void assignedtome(){
+    public String getempid(String person) {
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -17,19 +13,21 @@ public class complaint {
                 Connection connection = DriverManager.getConnection(url, user, pw);
                 Statement statement = connection.createStatement()
         ) {
-            String query1 = "select * from complaints";
+            String query1 = "select * from employee";
             ResultSet result = statement.executeQuery(query1);
 
-            String assigned_to=result.getString("assigned_to");
-            for (int i=0;result.next();i++){
-                if(assigned_to==emp_id){
-                    System.out.println("");
+            while(result.next()){
+                String username=result.getString("username");
+                String emp_id=result.getString("emp_id");
+                if(person==username){
+                    emp= emp_id;
                 }
+
             }
-
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return emp;
     }
+
 }
