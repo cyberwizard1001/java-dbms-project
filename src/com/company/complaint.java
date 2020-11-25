@@ -1,15 +1,10 @@
 package com.company;
-
 import java.sql.*;
 import java.util.Date;
 
 public class complaint {
-    public String emp_id;
-    public complaint(String emp_id){
-      this.emp_id=emp_id;
-    }
 
-    public void assignedtome(){
+    public void assignedtome(String emp_id) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -21,10 +16,21 @@ public class complaint {
             ResultSet result = statement.executeQuery(query1);
 
             String assigned_to=result.getString("assigned_to");
-            for (int i=0;result.next();i++){
-                if(assigned_to==emp_id){
-                    System.out.println("");
+            int c=0;
+
+
+            while(result.next()){
+
+                if(assigned_to.equals(emp_id)){
+                    c=c+1;
+                    System.out.println("("+c+")"+result.getString("complaint_id"+" "));
                 }
+            }
+            result.close();
+            if(c==0){
+                System.out.println("No complaints issued to you!");
+            }else{
+                ;
             }
 
 
