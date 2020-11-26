@@ -1,13 +1,11 @@
 package com.company;
 import java.sql.*;
 import java.lang.*;
-import java.util.Collection;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-//uses property relation
+//used property relation from sql
 public class inspection {
     //static final data members
     private static final double ph_min = 6.5;
@@ -15,6 +13,7 @@ public class inspection {
     private static final double con_max = 3.77;
 
     public void inspect(String username,String name) throws SQLException {
+        /*This method displays the water bodies having inappropriate ph_level and contamination level.*/
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -25,23 +24,20 @@ public class inspection {
             String query1 = "select * from property";
             ResultSet result = statement.executeQuery(query1);
 
-            int count=0;
-            while (result.next()) {
-                count+=1;
-            }
-            result.close();
-
             String source_id[]= new String[0];
-            String ph[]= new String[0];
+            Float ph[]= new Float[0];
             String con[]= new String[0];
             Date date[]= new Date[0];
+            //Dynamic Arraylists declaration
             ArrayList<String> mylist = new ArrayList<String>(Arrays.asList(source_id));
-            ArrayList<String> mylist2 = new ArrayList<String>(Arrays.asList(ph));
+            ArrayList<Float> mylist2 = new ArrayList<Float>(Arrays.asList(ph));
             ArrayList<String> mylist3 = new ArrayList<String>(Arrays.asList(con));
             ArrayList<Date> mylist4 = new ArrayList<Date>(Arrays.asList(date));
             String query2 = "select * from property order by source_id,inspection_date desc";
             ResultSet result1 = statement.executeQuery(query2);
 
+            //adding elements to the dynamic Arraylist(add())
+            //converting Arraylist to Array(toArray)
             while(result1.next()){
                 String id_element=result1.getString("source_id");
                 mylist.add(id_element);
@@ -51,21 +47,23 @@ public class inspection {
                 mylist4.add(date_element);
                 date= mylist4.toArray(date);
 
-                String ph_element=result1.getString("ph_level");
+                Float ph_element=result1.getFloat("ph_level");
                 mylist2.add(ph_element);
                 ph = mylist2.toArray(ph);
 
                 String con_element=result1.getString("contamination_level");
                 mylist3.add(con_element);
-                con= mylist4.toArray(con);
+                con= mylist3.toArray(con);
             }
+
+            //check on the latest(last inspection_date) properties of the inspected water body
             System.out.println("Sources with inappropriate ph_level: ");
             int j=0;
-            while(j<count){
+            while(j< source_id.length){
                 int k=j+1,match=0;
-                while(k<count && match==0){
+                while(k< source_id.length && match==0){
                     if(source_id[j]!=source_id[k]){
-                        if(Double.valueOf(ph[j])<ph_min || Double.valueOf(ph[j])>ph_max) {
+                        if(ph[j]<ph_min || ph[j]>ph_max) {
                             System.out.println(source_id[j] + " " + ph[j]);
                             match = 1;
                         }
@@ -77,13 +75,14 @@ public class inspection {
                 j+=1;
             }
 
+            //Float.valueof => converts String to float value
             System.out.println("Sources with high contamination level: ");
             j=0;
-            while(j<count){
+            while(j< source_id.length){
                 int k=j+1,match=0;
-                while(k<count && match==0){
+                while(k< source_id.length && match==0){
                     if(source_id[j]!=source_id[k]){
-                        if(Double.valueOf(con[j])>con_max) {
+                        if(Float.valueOf(con[j])>con_max) {
                             System.out.println(source_id[j] + " " + con[j]);
                             match = 1;
                         }
@@ -94,6 +93,7 @@ public class inspection {
                 }
                 j+=1;
             }
+            //back to myaccount(wre) portal
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
     } catch (SQLException ex) {

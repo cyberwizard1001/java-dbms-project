@@ -6,7 +6,7 @@ public class complaint {
     public String[] location;
 
     public complaint(){
-        location= new String[]{"Gandhinagar","Siddhapudur","Sungam","Peelamedu","Saibaba Colony"};
+        location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
     }
 
     public void assignedtome(String emp_id,String username,String name) throws SQLException {
@@ -30,7 +30,8 @@ public class complaint {
                     if(assigned_to.equals(emp_id) && result.getString("complaint_status").equals("pending")){
                         c=c+1;
                         int random_location= r.nextInt(location.length);
-                        System.out.println("("+c+") "+complaint_id+" "+issue+" @ "+location[random_location]);
+                        System.out.println("("+c+") Complaint_id: "+complaint_id);
+                        System.out.println("    Issue & Location: "+issue+" @ "+location[random_location]);
                         }
             }
             result.close();
