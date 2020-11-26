@@ -69,9 +69,15 @@ public class ResourceE implements employee {
                 }
                 break;
 
+            case 3:
+                treatment_plant plant_obj= new treatment_plant();
+                plant_obj.get_details();
+                break;
+
             case 4:
                 login login_obj= new login();
                 login_obj.Login();
+                break;
 
             default:
                 System.out.println("invalid chose!");

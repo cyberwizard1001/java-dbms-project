@@ -27,7 +27,6 @@ public class complaint {
                 String complaint_id=result.getString("complaint_id");
                 String assigned_to=result.getString("assigned_to");
                 String issue=result.getString("issue");
-                int i=0,t=0;
                     if(assigned_to.equals(emp_id) && result.getString("complaint_status").equals("pending")){
                         c=c+1;
                         int random_location= r.nextInt(location.length);
