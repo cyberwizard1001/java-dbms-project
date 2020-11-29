@@ -109,9 +109,10 @@ create table account(
 );
 
 insert into account values ('wre1','Ram','pwdwre1','wre');
-insert into account values ('wre1','Ram','pwdwre1','wre');
 insert into account values ('public1','Arya','pwdpub1','public');
 insert into account values ('public2','Neya','pwdpub2','public');
+insert into account values ('ad1','Sonu','pwdad1','admin');
+insert into account values ('f1','Santosh','pwdf1','finance');
 
 create table public(
     username varchar(50),
@@ -132,10 +133,13 @@ create table employee(
     name varchar(50),
     salary numeric(10,2),
     dob date,
-    doj date
+    doj date,
+    foreign key (username) references account(username)
 );
 
-insert into employee values ('wre1','empwre1','55000','1997-09-07','2019-03-28');
+insert into employee values ('wre1','empwre1',55000,'1997-09-07','2019-03-28');
+insert into employee values ('ad1','empad1',79000,'1982-08-07','2005-07-03');
+insert into employee values ('f1','empf1',47000,'1992-08-06','2018-09-08');
 
 create table admin(
     emp_id varchar(50),
@@ -144,12 +148,16 @@ create table admin(
     primary key (emp_id)
 );
 
+insert into admin values ('empad1','EX-IRS');
+
 create table finance(
     emp_id varchar(50),
     branch varchar(50),
     foreign key (emp_id) references employee(emp_id),
     primary key (emp_id)
 );
+
+insert into finance values ('empf1','finance');
 
 create table engineer(
     emp_id varchar(50),
