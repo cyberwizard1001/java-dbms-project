@@ -113,6 +113,9 @@ insert into account values ('public1','Arya','pwdpub1','public');
 insert into account values ('public2','Neya','pwdpub2','public');
 insert into account values ('ad1','Sonu','pwdad1','admin');
 insert into account values ('f1','Santosh','pwdf1','finance');
+insert into account values ('public3','Maya','pwdpub3','public');
+insert into account values ('public4','Diya','pwdpub4','public');
+insert into account values ('pe1','Chandru','pwdpe1','project engineer');
 
 create table public(
     username varchar(50),
@@ -126,6 +129,8 @@ create table public(
 
 insert into public values ('public1',13,2,'VKK Menon Road','Gandhipuram');
 insert into public values ('public2',32,7,'XYZ Street','Peelamedu');
+insert into public values ('public3',16,7,'T.T Street','Ramnagar');
+insert into public values ('public4',32,4,'Nehru Street','Avinashi');
 
 create table employee(
     username varchar(50),
@@ -140,6 +145,7 @@ create table employee(
 insert into employee values ('wre1','empwre1',55000,'1997-09-07','2019-03-28');
 insert into employee values ('ad1','empad1',79000,'1982-08-07','2005-07-03');
 insert into employee values ('f1','empf1',47000,'1992-08-06','2018-09-08');
+insert into employee values ('pe1','emppe1',67000,'1995-01-03','2017-08-23');
 
 create table admin(
     emp_id varchar(50),
@@ -167,6 +173,7 @@ create table engineer(
 );
 
 insert into engineer values ('empwre1','wre');
+insert into engineer values ('emppe1','pe');
 
 create table key_card(
     keycard_id varchar(50),
@@ -184,6 +191,11 @@ create table connection(
     foreign key (location_id) references area(location_id)
 );
 
+insert into connection values ('C023','domestic','L1');
+insert into connection values ('C088','commercial','L2');
+insert into connection values ('C035','domestic','L3');
+insert into connection values ('C034','domestic','L4');
+
 create table connection_req(
     connection_id varchar(50),
     type varchar(50),
@@ -200,6 +212,11 @@ create table public_connection(
     foreign key (username) references account(username)
 );
 
+insert into public_connection values ('public1','C023');
+insert into public_connection values ('public2','C088');
+insert into public_connection values ('public3','C034');
+insert into public_connection values ('public4','C034');
+
 create table payment(
     transaction_id varchar(50),
     bill_id varchar(50),
@@ -211,12 +228,22 @@ create table payment(
     primary key (transaction_id)
 );
 
+insert into payment values ('#12345',null,'online',null,'2020-11-12',null,50);
+insert into payment values ('#62635','#B01','offline',2300,'2020-11-29','2020-11-05',50);
+insert into payment values ('#42935','#B08','online',1700,'2020-11-09','2020-10-30',60);
+insert into payment values ('#91263','#B15','offline',1500 ,'2020-10-25','2020-10-01',48);
+
 create table public_payment(
     username varchar(50),
     transaction_id varchar(50),
     foreign key (transaction_id) references payment(transaction_id),
     foreign key (username) references account(username)
 );
+
+insert into public_payment values ('public1','#12345');
+insert into public_payment values ('public2','#62635');
+insert into public_payment values ('public3','#42935');
+insert into public_payment values ('public4','#91263');
 
 /*query*/
 select * from property order by source_id,inspection_date desc;
@@ -231,6 +258,10 @@ create table budget_and_tally(
     primary key (tally_id),
     foreign key (alloted_to) references engineer(emp_id)
 );
+select * from project;
+insert into budget_and_tally values ('empwre1','tp01',50000,50000);
+insert into budget_and_tally values ('empwre1','tp05',45000,45000);
+insert into budget_and_tally values ('empwre1','ts01',60000,60000);
 
 create table complaints(
     username varchar(50),
@@ -248,6 +279,7 @@ insert into complaints values ('public1','c1','ground water contamination','pend
 insert into complaints values ('public1','c2','unlicensed industry','pending','2020-11-02','empwre1');
 insert into complaints values ('public2','c3','sand laundering','pending','2020-10-24','empwre1');
 insert into complaints values ('public2','c4','unlicensed industry','complete','2020-04-09','empwre1');
+insert into complaints values ('public3','c5','connection problem','pending','2020-09-21','emppe1');
 
 
 create table project(
@@ -261,6 +293,11 @@ create table project(
     foreign key (emp_id) references employee(emp_id)
 );
 
+insert into project values ('p1','emppe1','dam construction','pending','2020-06-23','2020-12-15');
+insert into project values ('p2','emppe1','irrigation project','pending','2020-11-02','2021-05-09');
+insert into project values ('p3','emppe1','rejuvenate lake','complete','2020-10-24','2021-03-06');
+insert into project values ('p4','emppe1','checked /altered connections','complete','2020-10-01','2020-11-01');
+
 create table complaint_resolution(
     complaint_id varchar(50),
     project_id varchar(50),
@@ -270,6 +307,8 @@ create table complaint_resolution(
     primary key (project_id)
 );
 
+insert into complaint_resolution values ('c1','p4','sol2');
+
 create table development_project(
     project_id varchar(50),
     description varchar(100),
@@ -277,6 +316,9 @@ create table development_project(
     primary key (project_id)
 );
 
+insert into development_project values ('p1','desc1');
+insert into development_project values ('p2','desc2');
+insert into development_project values ('p3','desc3');
 
 create table purchase(
     purchase_id varchar(50),
