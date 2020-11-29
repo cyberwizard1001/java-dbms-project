@@ -79,7 +79,7 @@ public class    login {
 
                             else if(type.equals("finance"))
                             {
-                                Finance obj = new Finance();
+                                Finance obj = new Finance(username,name);
                                 obj.Console();
                             }
 

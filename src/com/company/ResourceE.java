@@ -8,6 +8,8 @@ public class ResourceE implements employee {
     String name;
     String username;
     String emp_id;
+
+
     public ResourceE(String username, String name)
     {
         this.username=username;
@@ -37,6 +39,7 @@ public class ResourceE implements employee {
     }
 
     public void Console() throws SQLException {
+
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");
         System.out.print("Welcome back "+(name)+"!");
@@ -71,7 +74,7 @@ public class ResourceE implements employee {
 
             case 3:
                 treatment_plant plant_obj= new treatment_plant();
-                plant_obj.get_details();
+                plant_obj.get_details(emp_id,username,name);
                 break;
 
             case 4:

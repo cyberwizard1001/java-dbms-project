@@ -35,19 +35,6 @@ public class complaint {
                         }
             }
             result.close();
-            if(c==0){
-                System.out.println("No complaints issued to you!");
-            }else{
-                Scanner input=new Scanner(System.in);
-                System.out.println("Press 'S' to solve the above mentioned Complaints");
-                System.out.println("Press 'N' to exit complaint portal");
-                String a=input.next();
-                if (a.compareToIgnoreCase("s")==0){
-                     System.out.println("in yes");
-                }else if (a.compareToIgnoreCase("n")==0){
-                    System.out.println("in no");
-                }
-            }
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
         } catch (SQLException ex) {
