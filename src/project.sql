@@ -176,6 +176,15 @@ create table connection(
     foreign key (location_id) references area(location_id)
 );
 
+create table connection_req(
+    connection_id varchar(50),
+    type varchar(50),
+    location_id varchar(50),
+    status varchar(50),
+    primary key (connection_id),
+    foreign key (location_id) references area(location_id)
+);
+
 create table public_connection(
     username varchar(50),
     connection_id varchar(50),
