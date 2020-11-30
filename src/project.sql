@@ -1,11 +1,15 @@
 create schema project_trial;
+
+
 use project_trial;
+
 
 create table source (
     source_id varchar(50),
     name varchar(50),
     primary key (source_id)
 );
+
 
 insert into source values ('R123','abc');
 insert into source values ('D317','mno');
@@ -55,7 +59,7 @@ insert into property values ('D317','2020-09-13',7.7,500,1);
 insert into property values ('R123','2020-08-21',7.9,420,2.5);
 insert into property values ('D317','2020-10-21',7.7,700,4.7);
 insert into property values ('R745','2020-11-17',7.8,450,3);
-insert into  property values ('R908','2020-09-14',8.9,430,4.5);
+insert into property values ('R908','2020-09-14',8.9,430,4.5);
 insert into property values ('D635','2020-07-09',5.6,459,5);
 insert into property values  ('R742','2020-07-07',4,346,3.3);
 insert into property values ('R908','2020-11-29',7.8,400,3);
@@ -66,8 +70,10 @@ create table area(
     dam_id varchar(50),
     no_of_connections numeric(5,0),
     primary key (location_id),
-    foreign key (dam_id) references dam(dam_id)
+   foreign key (dam_id) references dam(dam_id)
 );
+
+drop table area;
 
 insert into area values ('L1','D111',47);
 insert into area values ('L2','D111',27);
@@ -107,7 +113,9 @@ create table account(
     password varchar(50),
     type varchar(50)
 );
+
 select * from account;
+
 insert into account values ('wre1','Ram','pwdwre1','wre');
 insert into account values ('public1','Arya','pwdpub1','public');
 insert into account values ('public2','Neya','pwdpub2','public');
@@ -116,7 +124,10 @@ insert into account values ('f1','Santosh','pwdf1','finance');
 insert into account values ('public3','Maya','pwdpub3','public');
 insert into account values ('public4','Diya','pwdpub4','public');
 insert into account values ('pe1','Chandru','pwdpe1','project engineer');
+insert into account values ('sys01','Nirmal','pwdsys01','sysadmin');
+
 select * from complaints;
+
 create table public(
     username varchar(50),
     no_of_connections numeric(2,0),
@@ -141,11 +152,14 @@ create table employee(
     doj date,
     foreign key (username) references account(username)
 );
+
 select * from employee;
-insert into employee values ('wre1','empwre1',55000,'1997-09-07','2019-03-28');
-insert into employee values ('ad1','empad1',79000,'1982-08-07','2005-07-03');
-insert into employee values ('f1','empf1',47000,'1992-08-06','2018-09-08');
-insert into employee values ('pe1','emppe1',67000,'1995-01-03','2017-08-23');
+
+insert into employee values ('wre1','empwre1','Ram',55000,'1997-09-07','2019-03-28');
+insert into employee values ('ad1','empad1','Tarsana',79000,'1982-08-07','2005-07-03');
+insert into employee values ('f1','empf1','Rithika',47000,'1992-08-06','2018-09-08');
+insert into employee values ('pe1','emppe1','Vinaya',67000,'1995-01-03','2017-08-23');
+insert into employee values ('sys01','empsys01','Nirmal',65000,'1997-09-07','2019-03-28');
 
 create table admin(
     emp_id varchar(50),
@@ -177,11 +191,13 @@ insert into engineer values ('emppe1','pe');
 
 create table key_card(
     keycard_id varchar(50),
-    issue varchar(50),
+    issue date,
     emp_id varchar(50),
     primary key (keycard_id),
     foreign key (emp_id) references employee(emp_id)
 );
+
+drop table key_card;
 
 create table connection(
     connection_id varchar(50),
@@ -258,7 +274,9 @@ create table budget_and_tally(
     primary key (tally_id),
     foreign key (alloted_to) references engineer(emp_id)
 );
+
 select * from project;
+
 insert into budget_and_tally values ('empwre1','tp01',50000,50000);
 insert into budget_and_tally values ('empwre1','tp05',45000,45000);
 insert into budget_and_tally values ('empwre1','ts01',60000,60000);
@@ -274,6 +292,7 @@ create table complaints(
     foreign key (assigned_to) references employee(emp_id),
     foreign key (username) references public(username)
 );
+
 select * from complaints;
 select substring(complaint_id,2) AS ExtractString FROM complaints order by ExtractString desc;
 insert into complaints values ('public1','c1','ground water contamination','pending','2020-06-23','empwre1');
@@ -345,5 +364,10 @@ create table inventory(
 );
 
 
+insert into key_card values ('K29112020E01','2020-11-29','empwre1');
+insert into key_card values ('K29112020E02','2020-11-29','empf1');
+insert into key_card values ('K29112020E03','2020-11-29','empad1');
+insert into key_card values ('K29112020E04','2020-11-29','empwre1');
+insert into key_card values ('K29112020E05','2020-11-29','empwre1');
 
 
