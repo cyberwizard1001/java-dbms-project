@@ -67,6 +67,7 @@ public class treatment_plant {
             if(found!=1){
                 System.out.println(("Check the Waste Water Treatment Plant Name!"));
             }
+            System.out.println("    ");
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
         }

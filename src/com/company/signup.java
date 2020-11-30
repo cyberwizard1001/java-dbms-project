@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class signup {
@@ -84,7 +85,7 @@ public class signup {
             Main.main(null);
 
 
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 

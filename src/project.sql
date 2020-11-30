@@ -107,7 +107,7 @@ create table account(
     password varchar(50),
     type varchar(50)
 );
-
+select * from account;
 insert into account values ('wre1','Ram','pwdwre1','wre');
 insert into account values ('public1','Arya','pwdpub1','public');
 insert into account values ('public2','Neya','pwdpub2','public');
@@ -116,7 +116,7 @@ insert into account values ('f1','Santosh','pwdf1','finance');
 insert into account values ('public3','Maya','pwdpub3','public');
 insert into account values ('public4','Diya','pwdpub4','public');
 insert into account values ('pe1','Chandru','pwdpe1','project engineer');
-
+select * from complaints;
 create table public(
     username varchar(50),
     no_of_connections numeric(2,0),
@@ -141,7 +141,7 @@ create table employee(
     doj date,
     foreign key (username) references account(username)
 );
-
+select * from employee;
 insert into employee values ('wre1','empwre1',55000,'1997-09-07','2019-03-28');
 insert into employee values ('ad1','empad1',79000,'1982-08-07','2005-07-03');
 insert into employee values ('f1','empf1',47000,'1992-08-06','2018-09-08');
@@ -271,16 +271,16 @@ create table complaints(
     date_reg date,
     assigned_to varchar(50),
     primary key (complaint_id),
-    foreign key (assigned_to) references engineer(emp_id),
+    foreign key (assigned_to) references employee(emp_id),
     foreign key (username) references public(username)
 );
-
+select * from complaints;
 insert into complaints values ('public1','c1','ground water contamination','pending','2020-06-23','empwre1');
 insert into complaints values ('public1','c2','unlicensed industry','pending','2020-11-02','empwre1');
 insert into complaints values ('public2','c3','sand laundering','pending','2020-10-24','empwre1');
 insert into complaints values ('public2','c4','unlicensed industry','complete','2020-04-09','empwre1');
 insert into complaints values ('public3','c5','connection problem','pending','2020-09-21','emppe1');
-
+insert into complaints values ('public1','c6','p1','pending','2020-09-09','ad1');
 
 create table project(
     project_id varchar(50),

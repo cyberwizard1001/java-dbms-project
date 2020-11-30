@@ -1,8 +1,53 @@
 package com.company;
 
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Scanner;
+
 public class Public {
+    String name;
+    String username;
 
-    public void Console() {
+    public Public(String username, String name)
+    {
+        this.username=username;
+        this.name = name;
+    }
 
+    public void Console() throws ParseException, SQLException {
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
+        System.out.print("\n");
+        System.out.print("Welcome back "+(name)+"!");
+        System.out.print("\n");
+        System.out.println("(1)Report Complaint ");
+        System.out.println("(2)View Complaints assigned to me ");
+        System.out.println("(3)Get details on Waste-water treatment plants ");
+        System.out.println("(4)Sign out ");
+
+        System.out.print("\n\nWhat work do you have? : ");
+        int work = input.nextInt();
+
+        switch (work){
+            case 1:
+                complaint complaint_obj = new complaint();
+                complaint_obj.insertcomplaint(username);
+                break;
+
+            case 2:
+
+
+
+            case 3:
+
+
+            case 4:
+
+
+            default:
+                System.out.println("invalid chose!");
+        }
     }
 }
+
+
+

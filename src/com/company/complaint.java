@@ -1,13 +1,43 @@
 package com.company;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
+
 
 public class complaint {
-    public String[] location;
+    public complaint(){
+        int complaint_id;
+    }
+    Scanner input=new Scanner(System.in);
+    //public String[] location;
 
     //public complaint(){
         //location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
    // }
+
+    public void insertcomplaint(String username) throws ParseException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/project_trial";
+        String pw = "n";
+        String user = "root";
+
+        Connection connection = DriverManager.getConnection(url, user, pw);
+        Statement statement = connection.createStatement();
+
+        System.out.println("Issue: ");
+        String i=input.nextLine();
+        System.out.println("Date: ");
+        String date = input.next();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        complaint_id=7;
+
+        String query2="insert into complaints "+ "values ('"+username+"','c"+complaint_id+"','"+i+"','pending','"+date+"','empad1')";
+        System.out.println(query2);
+        statement.execute(query2);
+        complaint_id=complaint_id+1;
+        System.out.println("Complaint recorded");
+    }
 
     public void assignedtome(String emp_id,String username,String name) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";

@@ -4,13 +4,14 @@ package com.company;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Main  extends ASCIIArtService {
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException, ParseException {
 
-    /*    ASCIIArtService.print();
+       /* ASCIIArtService.print();
         String print = "Welcome to the Water Management System Console. Choose the         option relating to what you want to do";
 
         Scanner input = new Scanner(System.in).useDelimiter("\n");
@@ -43,14 +44,16 @@ public class Main  extends ASCIIArtService {
             }
         }
 
+    }*/
+
+        Public obj = new Public("public1", "Arya");
+        obj.Console();
     }
-
-
-     */
+     /*
         //SystemsE Obj = new SystemsE("Nirmal K");
         ResourceE engineer = new ResourceE("wre1","Ram");
                 //Obj.Console();
         engineer.Console();
 
-    }
+    }*/
 }

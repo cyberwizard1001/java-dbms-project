@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class    login {
@@ -40,8 +41,7 @@ public class    login {
                 Statement statement = connection.createStatement()
                 //task for self - learn how to use prepared statements
         ) {
-            String query = "select username,password,type from account";
-            System.out.println("Statement: " + query);
+            String query = "select * from account";
 
             //step 3 - create a result object and perform a query
             ResultSet result = statement.executeQuery(query);
@@ -64,12 +64,13 @@ public class    login {
                     String username = result.getString("username");
                     String password = result.getString("password");
                     String type = result.getString("type");
+                    String name = result.getString("name");
 
                     if (username.equals(user_input)) {
                         if (password.equals(pass_input)) {
                             System.out.println("You've successfully logged in");
                             login = true;
-                            String name = result.getString("name");
+
 
                             if(type.equals("admin"))
                             {
@@ -103,7 +104,7 @@ public class    login {
 
                             else
                             {
-                                Public obj = new Public();
+                                Public obj = new Public(username,name);
                                 obj.Console();
                             }
 
@@ -121,7 +122,7 @@ public class    login {
 
 
 
-        } catch (SQLException | IOException ex) {
+        } catch (SQLException | IOException | ParseException ex) {
             ex.printStackTrace();
         }
 
