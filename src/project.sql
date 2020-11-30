@@ -275,12 +275,14 @@ create table complaints(
     foreign key (username) references public(username)
 );
 select * from complaints;
+select substring(complaint_id,2) AS ExtractString FROM complaints order by ExtractString desc;
 insert into complaints values ('public1','c1','ground water contamination','pending','2020-06-23','empwre1');
 insert into complaints values ('public1','c2','unlicensed industry','pending','2020-11-02','empwre1');
 insert into complaints values ('public2','c3','sand laundering','pending','2020-10-24','empwre1');
 insert into complaints values ('public2','c4','unlicensed industry','complete','2020-04-09','empwre1');
 insert into complaints values ('public3','c5','connection problem','pending','2020-09-21','emppe1');
 insert into complaints values ('public1','c6','p1','pending','2020-09-09','ad1');
+update complaints set assigned_to='empad1' where complaint_id='c0';
 
 create table project(
     project_id varchar(50),

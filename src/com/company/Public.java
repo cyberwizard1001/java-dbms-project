@@ -20,9 +20,8 @@ public class Public {
         System.out.print("Welcome back "+(name)+"!");
         System.out.print("\n");
         System.out.println("(1)Report Complaint ");
-        System.out.println("(2)View Complaints assigned to me ");
-        System.out.println("(3)Get details on Waste-water treatment plants ");
-        System.out.println("(4)Sign out ");
+        System.out.println("(2)Make Payment ");
+        System.out.println("(3)Sign out ");
 
         System.out.print("\n\nWhat work do you have? : ");
         int work = input.nextInt();
@@ -34,14 +33,15 @@ public class Public {
                 break;
 
             case 2:
-
+                payment payment_obj = new payment();
+                payment_obj.makepay();
+                break;
 
 
             case 3:
-
-
-            case 4:
-
+                login login_obj= new login();
+                login_obj.Login();
+                break;
 
             default:
                 System.out.println("invalid chose!");
