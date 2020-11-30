@@ -5,9 +5,9 @@ import java.util.*;
 public class complaint {
     public String[] location;
 
-    public complaint(){
-        location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
-    }
+    //public complaint(){
+        //location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
+   // }
 
     public void assignedtome(String emp_id,String username,String name) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";
@@ -19,7 +19,7 @@ public class complaint {
         ) {
             String query1 = "select * from complaints";
             ResultSet result = statement.executeQuery(query1);
-            Random r = new Random();
+            //Random r = new Random();
 
 
             int c=0;
@@ -29,9 +29,10 @@ public class complaint {
                 String issue=result.getString("issue");
                     if(assigned_to.equals(emp_id) && result.getString("complaint_status").equals("pending")){
                         c=c+1;
-                        int random_location= r.nextInt(location.length);
+//                        int random_location= r.nextInt(location.length);
                         System.out.println("("+c+") Complaint_id: "+complaint_id);
-                        System.out.println("    Issue & Location: "+issue+" @ "+location[random_location]);
+                        System.out.println("   Issue: "+issue);
+                        //System.out.println("    Issue & Location: "+issue+" @ "+location[random_location]);
                         }
             }
             result.close();
