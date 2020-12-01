@@ -12,7 +12,7 @@ public class complaint {
         //location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
    // }
 
-    public void insertcomplaint(String username) throws ParseException, SQLException {
+    public void insertcomplaint(String username,String name) throws ParseException, SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -38,9 +38,10 @@ public class complaint {
         }
         complaint_id=complaint_id+1;
         String query2="insert into complaints "+ "values ('"+username+"','c"+complaint_id+"','"+i+"','pending','"+date+"','empad1')";
-        System.out.println(query2);
         statement.execute(query2);
         System.out.println("Complaint recorded");
+        Public public_obj= new Public(username,name);
+        public_obj.Console();
     }
 
     public void assigncomplaints(String username,String name){

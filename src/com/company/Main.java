@@ -1,7 +1,5 @@
 package com.company;
 
-
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -11,7 +9,7 @@ public class Main  extends ASCIIArtService {
 
     public static void main(String[] args) throws SQLException, IOException, ParseException {
 
-       /* ASCIIArtService.print();
+        ASCIIArtService.print();
         String print = "Welcome to the Water Management System Console. Choose the         option relating to what you want to do";
 
         Scanner input = new Scanner(System.in).useDelimiter("\n");
@@ -24,7 +22,6 @@ public class Main  extends ASCIIArtService {
 
         System.out.println("* Existing user? Press 1 to login to your account.");
         System.out.println("\n* New user? Press 2 to sign up for an account");
-        System.out.println("\n* Here for data? Press 3 to view public data");
 
         System.out.print("\n\nMake your choice: ");
         int choice = input.nextInt();
@@ -44,20 +41,19 @@ public class Main  extends ASCIIArtService {
             }
         }
 
+    }
+
+    }
+     /*
+     Admin a=new Admin("empad1","Sitha");
+        a.Console();
+
+        //SystemsE Obj = new SystemsE("Nirmal K");
+        ResourceE engineer = new ResourceE("wre1","Ram");
+                //Obj.Console();
+        engineer.Console();
+        Public obj = new Public("public1", "Arya");
+        obj.Console();
+
     }*/
-        //Admin a=new Admin("empad1","Sitha");
-        //a.Console();
-
-
-        SystemsE Obj = new SystemsE("Nirmal K","sys01");
-        //ResourceE engineer = new ResourceE("wre1","Ram");
-        Obj.Console();
-        //engineer.Console();
-        //Public obj = new Public("public1", "Arya");
-        //obj.Console();
-
-    }
-
-
-    }
 

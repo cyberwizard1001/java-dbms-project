@@ -20,8 +20,7 @@ public class Public {
         System.out.print("Welcome back "+(name)+"!");
         System.out.print("\n");
         System.out.println("(1)Report Complaint ");
-        System.out.println("(2)Make Payment ");
-        System.out.println("(3)Sign out ");
+        System.out.println("(2)Sign out ");
 
         System.out.print("\n\nWhat work do you have? : ");
         int work = input.nextInt();
@@ -29,16 +28,10 @@ public class Public {
         switch (work){
             case 1:
                 complaint complaint_obj = new complaint();
-                complaint_obj.insertcomplaint(username);
+                complaint_obj.insertcomplaint(username,name);
                 break;
 
             case 2:
-                payment payment_obj = new payment();
-                payment_obj.makepay();
-                break;
-
-
-            case 3:
                 login login_obj= new login();
                 login_obj.Login();
                 break;
