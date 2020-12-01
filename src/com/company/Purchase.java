@@ -18,6 +18,26 @@ public class Purchase extends database implements employee {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
 
+    public void Console() throws IOException, SQLException {
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Purchase Management");
+        System.out.println("Choose your operation: ");
+        System.out.println("1. Make purchase");
+        System.out.println("2. Check purchase status ");
+
+        int choice;
+        choice = input.nextInt();
+
+        if(choice==1)
+        {
+            make_request();
+        }
+
+        else if(choice==2)
+        {
+            view_status();
+        }
+    }
 
     public Purchase(String username) {
         this.username = username;
