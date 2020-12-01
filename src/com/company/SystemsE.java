@@ -76,9 +76,41 @@ public class SystemsE implements employee {
         System.out.print("Login time: ");
         System.out.println(dtf.format(now));
 
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
 
-        //statuscheck();
-        //DBadmin();
+        System.out.println("Choose your operation: ");
+        System.out.println("1. Check system status");
+        System.out.println("2. Open database management (Username: nirmalk Password: nirmal1503)");
+        System.out.println("3. Open Inventory Management");
+        System.out.println("4. Open Purchase Management");
+
+        int choice;
+        System.out.print("Choice: ");
+        choice = input.nextInt();
+
+        switch (choice)
+        {
+            case 1: statuscheck();
+            break;
+
+            case 2: DBadmin();
+            break;
+
+            case 3: {
+                Inventory obj = new Inventory();
+                obj.Console();
+            }
+
+            case 4: {
+                Purchase obj = new Purchase(username);
+                obj.Console();
+            }
+
+            default:{
+                System.out.println("Invalid input. Please try again. ");
+                Console();
+            }
+        }
 
         Inventory obj = new Inventory();
         obj.Console();
@@ -155,8 +187,8 @@ public class SystemsE implements employee {
     public void DBadmin() throws IOException
     {
 
-        System.out.println("Do you want to open the Database administration login? ");
-        System.out.println("Press y to continue");
+        System.out.println("Do you want to open the Database Administration login? ");
+        System.out.print("Press y to continue: ");
         Scanner input = new Scanner(System.in).useDelimiter("\n");
 
         char option = input.next().charAt(0);

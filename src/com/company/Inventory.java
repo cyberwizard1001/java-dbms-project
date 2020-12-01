@@ -25,17 +25,20 @@ public class Inventory extends database{
         System.out.println("2. Search by product name\n");
         System.out.println("3. Search by serial number\n");
 
+        System.out.print("Choice: ");
         int choice;
         choice = input.nextInt();
+
+        System.out.print("\n\n");
 
         if(choice==1)
             create_record();
 
         else if(choice==2)
-            serial_view();
+            product_view();
 
         else if(choice==3)
-            product_view();
+            serial_view();
 
     }
 
@@ -85,7 +88,7 @@ public class Inventory extends database{
 
     private void create_record() throws SQLException {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("Enter approved purchase ID: ");
+        System.out.print("Enter approved purchase ID: ");
         String check = input.next();
         boolean verification = check_approved(check);
 
@@ -135,7 +138,7 @@ public class Inventory extends database{
         ) {
 
             Scanner input = new Scanner(System.in).useDelimiter("\n");
-            System.out.println("Enter serial number: ");
+            System.out.print("Enter serial number: ");
             String serial_required = input.next();
             String query = "select * from inventory";
             System.out.println("Statement: " + query);
@@ -155,12 +158,12 @@ public class Inventory extends database{
                     prod_name = result.getString("prod_name");
                     price = result.getInt("price");
 
-                    System.out.println("Serial number: " + serial_no);
-                    System.out.println("Purchase ID: " + purchase_id);
-                    System.out.println("Number of products: " + num_of_prod);
-                    System.out.println("Specifications: " + spec);
-                    System.out.println("Product name: " + prod_name);
-                    System.out.println("Price: " + price);
+                    System.out.print("Serial number: " + serial_no);
+                    System.out.print("Purchase ID: " + purchase_id);
+                    System.out.print("Number of products: " + num_of_prod);
+                    System.out.print("Specifications: " + spec);
+                    System.out.print("Product name: " + prod_name);
+                    System.out.print("Price: " + price);
                     System.out.println();
 
 
@@ -221,24 +224,21 @@ public class Inventory extends database{
                     serial_no = result.getString("serial_no");
                     price = result.getInt("price");
 
-                    System.out.println("Serial number: " + serial_no);
-                    System.out.println("Purchse ID: " + purchase_id);
-                    System.out.println("Number of products: " + num_of_prod);
-                    System.out.println("Specifications: " + spec);
-                    System.out.println("Product name: " + prod_name);
-                    System.out.println("Price: " + price);
+                    System.out.print("Serial number: " + serial_no);
+                    System.out.print("Purchase ID: " + purchase_id);
+                    System.out.print("Number of products: " + num_of_prod);
+                    System.out.print("Specifications: " + spec);
+                    System.out.print("Product name: " + prod_name);
+                    System.out.print("Price: " + price);
                     System.out.println();
                 }
-
-
             }
-
 
             {
                 System.out.println("\nPress any key to go back");
                 char ret;
 
-                ret = input.next().charAt(0);
+                ret = input.nextLine().charAt(0);
                 Console();
             }
 

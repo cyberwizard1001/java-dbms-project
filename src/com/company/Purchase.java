@@ -20,12 +20,13 @@ public class Purchase extends database implements employee {
 
     public void Console() throws IOException, SQLException {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("Purchase Management");
+        System.out.println("Purchase Management System\n");
         System.out.println("Choose your operation: ");
         System.out.println("1. Make purchase");
         System.out.println("2. Check purchase status ");
 
         int choice;
+        System.out.print("Choice: ");
         choice = input.nextInt();
 
         if(choice==1)
@@ -58,7 +59,7 @@ public class Purchase extends database implements employee {
 
         ) {
 
-            String query = "select username, emp_id from employee";
+            String query = "select username,emp_id from employee";
             System.out.println("Statement: " + query);
 
             //step 3 - create a result object and perform a query
@@ -94,7 +95,7 @@ public class Purchase extends database implements employee {
         find_emp_id(username);
         System.out.println("Welcome, " + username + "(" + emp_id + ")");
 
-        System.out.println("Enter purchase ID: ");
+        System.out.print("Enter purchase ID: ");
         purchase_id = input.next();
 
         System.out.println("Do you want to continue requesting for this purchase? (y/n) ");
