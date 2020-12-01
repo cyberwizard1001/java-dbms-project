@@ -78,7 +78,10 @@ public class SystemsE implements employee {
 
 
         //statuscheck();
-        DBadmin();
+        //DBadmin();
+
+        Inventory obj = new Inventory();
+        obj.Console();
 
     }
 
