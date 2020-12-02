@@ -10,7 +10,9 @@ public class complaint {
 
     //public complaint(){
         //location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
-   // }
+   //
+    //
+    // Comment from Tarsana}
 
     public void insertcomplaint(String username,String name) throws ParseException, SQLException {
         String url = "jdbc:mysql://localhost:3306/project_trial";
