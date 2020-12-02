@@ -276,7 +276,7 @@ create table budget_and_tally(
 );
 
 select * from project;
-
+select * from budget_and_tally;
 insert into budget_and_tally values ('empwre1','tp01',50000,50000);
 insert into budget_and_tally values ('empwre1','tp05',45000,45000);
 insert into budget_and_tally values ('empwre1','ts01',60000,60000);
@@ -302,7 +302,7 @@ insert into complaints values ('public2','c4','unlicensed industry','complete','
 insert into complaints values ('public3','c5','connection problem','pending','2020-09-21','emppe1');
 insert into complaints values ('public1','c6','p1','pending','2020-09-09','empad1');
 update complaints set assigned_to='empad1' where complaint_id='c0';
-delete from complaints where complaint_id='c7';
+delete from complaints where complaint_id='c6';
 
 create table project(
     project_id varchar(50),
@@ -373,3 +373,6 @@ insert into key_card values ('K29112020E05','2020-11-29','empwre1');
 
 
 select * from complaints;
+select * from property;
+select * from waste_water_management;
+select * from purification;

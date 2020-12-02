@@ -6,44 +6,13 @@ import java.util.*;
 
 public class complaint {
     Scanner input=new Scanner(System.in);
-    //public String[] location;
+    public String[] location;
 
-    //public complaint(){
-        //location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
-   //
-    //
-    // Comment from Tarsana}
+    public complaint(){
+        location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
+    }
 
     public void insertcomplaint(String username,String name) throws ParseException, SQLException {
-        String url = "jdbc:mysql://localhost:3306/project_trial";
-        String pw = "n";
-        String user = "root";
-
-        Connection connection = DriverManager.getConnection(url, user, pw);
-        Statement statement = connection.createStatement();
-
-
-        System.out.println("Issue: ");
-        String i=input.nextLine();
-        System.out.println("Date: ");
-        String date = input.next();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String query3="select substring(complaint_id,2) AS ExtractString FROM complaints order by ExtractString desc";
-        ResultSet primarykey= statement.executeQuery(query3);
-
-        int complaint_id=0;
-        int match=0;
-        while(primarykey.next() && match==0){
-            String pk=primarykey.getString("ExtractString");
-            complaint_id=Integer.parseInt(pk);
-            match=1;
-        }
-        complaint_id=complaint_id+1;
-        String query2="insert into complaints "+ "values ('"+username+"','c"+complaint_id+"','"+i+"','pending','"+date+"','empad1')";
-        statement.execute(query2);
-        System.out.println("Complaint recorded");
-        Public public_obj= new Public(username,name);
-        public_obj.Console();
     }
 
     public void assigncomplaints(String username,String name){
@@ -98,7 +67,7 @@ public class complaint {
         ) {
             String query1 = "select * from complaints";
             ResultSet result = statement.executeQuery(query1);
-            //Random r = new Random();
+            Random r = new Random();
 
 
             int c=0;
@@ -108,10 +77,10 @@ public class complaint {
                 String issue=result.getString("issue");
                     if(assigned_to.equals(emp_id) && result.getString("complaint_status").equals("pending")){
                         c=c+1;
-//                        int random_location= r.nextInt(location.length);
+                        int random_location= r.nextInt(location.length);
                         System.out.println("("+c+") Complaint_id: "+complaint_id);
                         System.out.println("   Issue: "+issue);
-                        //System.out.println("    Issue & Location: "+issue+" @ "+location[random_location]);
+                        System.out.println("    Issue & Location: "+issue+" @ "+location[random_location]);
                         }
             }
             result.close();

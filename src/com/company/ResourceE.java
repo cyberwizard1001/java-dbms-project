@@ -83,7 +83,7 @@ public class ResourceE implements employee {
                 break;
 
             default:
-                System.out.println("invalid chose!");
+                System.out.println("Invalid Chose!");
             }
         }
 }

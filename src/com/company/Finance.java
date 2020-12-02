@@ -17,7 +17,7 @@ public class Finance {
         System.out.print("\n");
         System.out.print("Welcome back "+(name)+"!");
         System.out.print("\n");
-        //System.out.println("(1)Allot Approval ");
+        System.out.println("(1)Allot Approval ");
         //System.out.println("(2)Generate Report");
         System.out.println("(3)Sign out ");
 
@@ -25,8 +25,10 @@ public class Finance {
         int work = input.nextInt();
 
         switch (work){
-          //  case 1:
-           //     break;
+           case 1:
+               budget_and_tally bt_obj= new budget_and_tally();
+               bt_obj.decideapproval();
+               break;
 
           //  case 2:
             //    break;
