@@ -1,7 +1,5 @@
 package com.company;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class complaint {
@@ -12,7 +10,7 @@ public class complaint {
         location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
     }
 
-    public void insertcomplaint(String username,String name) throws ParseException, SQLException {
+    public void insertcomplaint(String username,String name) {
     }
 
     public void assigncomplaints(String username,String name){

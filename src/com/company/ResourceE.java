@@ -73,7 +73,7 @@ public class ResourceE implements employee {
 
             case 3:
                 treatment_plant plant_obj= new treatment_plant();
-                plant_obj.get_details(emp_id,username,name);
+                plant_obj.plant_details(username,name);
                 break;
 
             case 4:

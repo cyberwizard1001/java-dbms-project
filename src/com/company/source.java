@@ -7,7 +7,7 @@ public class source implements river,dam {
     String pw = "n";
     String user = "root";
 
-    public source(String s_id) throws SQLException {
+    public source(String s_id) {
         this.s_id = s_id;
     }
 

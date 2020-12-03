@@ -13,7 +13,7 @@ public class treatment_plant {
     String pw = "n";
     String user = "root";
 
-    public void getmethod(String p_name){
+    public void get_method(String p_name){
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
                 Statement statement = connection.createStatement()
@@ -40,7 +40,7 @@ public class treatment_plant {
         }
     }
 
-    public void get_details(String emp_id,String username,String name){
+    public void plant_details(String username,String name){
 
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
@@ -61,7 +61,7 @@ public class treatment_plant {
                     System.out.println("Location ID: "+location);
                     System.out.println("Volume of water treated per month(in litres): "+volume);
                     found=1;
-                    getmethod(p_name);
+                    get_method(p_name);
                 }
             }
             if(found!=1){

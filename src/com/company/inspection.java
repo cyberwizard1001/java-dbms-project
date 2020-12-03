@@ -8,9 +8,9 @@ import java.util.Arrays;
 //used property relation from sql
 public class inspection {
     //static final data members
-    private static final double ph_min = 6.5;
-    private static final double ph_max = 8.5;
-    private static final double con_max = 3.77;
+    static final double ph_min = 6.5;
+    static final double ph_max = 8.5;
+    static final double con_max = 3.77;
 
     public void inspect(String username,String name) throws SQLException {
         /*This method displays the water bodies having inappropriate ph_level and contamination level.*/
