@@ -19,21 +19,24 @@ public class source implements river,dam {
             String query1 = "select * from source";
             ResultSet result1 = statement.executeQuery(query1);
 
-            System.out.println("*** Details on the Water Source ***");
+            if (!("R".equalsIgnoreCase(String.valueOf(s_id.charAt(0))) || "D".equalsIgnoreCase(String.valueOf(s_id.charAt(0))))){
+                System.out.println("Invalid Source ID!");
+                ResourceE resource_obj= new ResourceE(username,name);
+                resource_obj.Console();
+            }
+
             while (result1.next()) {
                 String river_id = result1.getString("source_id");
                 if (s_id.compareToIgnoreCase(river_id) == 0) {
+                    System.out.println("*** Details on the Water Source ***");
                     System.out.println("Source ID: " + river_id);
                     System.out.println("Source name: " + result1.getString(2));
-
                 }
             }
             if ("R".equalsIgnoreCase(String.valueOf(s_id.charAt(0)))) {
                 river_details(username,name);
             } else if ("D".equalsIgnoreCase(String.valueOf(s_id.charAt(0)))) {
                 dam_details(username, name);
-            } else {
-                System.out.println("Invalid Source ID!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

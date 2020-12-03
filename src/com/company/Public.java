@@ -1,7 +1,6 @@
 package com.company;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.Scanner;
 
 public class Public {
@@ -14,7 +13,7 @@ public class Public {
         this.name = name;
     }
 
-    public void Console() throws ParseException, SQLException {
+    public void Console() throws SQLException {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");
         System.out.print("Welcome back "+(name)+"!");
@@ -28,7 +27,7 @@ public class Public {
         switch (work){
             case 1:
                 complaint complaint_obj = new complaint();
-                complaint_obj.insertcomplaint(username,name);
+                complaint_obj.report_complaint(username,name);
                 break;
 
             case 2:

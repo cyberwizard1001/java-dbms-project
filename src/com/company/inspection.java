@@ -29,10 +29,10 @@ public class inspection {
             Float[] con = new Float[0];
             Date[] date = new Date[0];
             //Dynamic Arraylists declaration
-            ArrayList<String> mylist = new ArrayList<String>(Arrays.asList(source_id));
-            ArrayList<Float> mylist2 = new ArrayList<Float>(Arrays.asList(ph));
-            ArrayList<Float> mylist3 = new ArrayList<Float>(Arrays.asList(con));
-            ArrayList<Date> mylist4 = new ArrayList<Date>(Arrays.asList(date));
+            ArrayList<String> mylist = new ArrayList<>(Arrays.asList(source_id));
+            ArrayList<Float> mylist2 = new ArrayList<>(Arrays.asList(ph));
+            ArrayList<Float> mylist3 = new ArrayList<>(Arrays.asList(con));
+            ArrayList<Date> mylist4 = new ArrayList<>(Arrays.asList(date));
             String query2 = "select * from property order by source_id,inspection_date desc";
             ResultSet result1 = statement.executeQuery(query2);
 

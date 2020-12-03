@@ -10,7 +10,7 @@ public class complaint {
         location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
     }
 
-    public void insertcomplaint(String username,String name) {
+    public void report_complaint(String username,String name) {
     }
 
     public void assigncomplaints(String username,String name){
@@ -77,7 +77,6 @@ public class complaint {
                         c=c+1;
                         int random_location= r.nextInt(location.length);
                         System.out.println("("+c+") Complaint_id: "+complaint_id);
-                        System.out.println("   Issue: "+issue);
                         System.out.println("    Issue & Location: "+issue+" @ "+location[random_location]);
                         }
             }
