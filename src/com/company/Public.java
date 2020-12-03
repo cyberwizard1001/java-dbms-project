@@ -3,9 +3,6 @@ package com.company;
 import java.util.Scanner;
 
 public class Public {
-
-
-
     public void Console()  {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");

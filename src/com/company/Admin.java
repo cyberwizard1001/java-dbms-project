@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Admin{
     public void Console() {
-
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");
         System.out.print("Welcome back!");
