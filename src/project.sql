@@ -373,3 +373,4 @@ select * from property;
 select * from waste_water_management;
 select * from purification;
 select * from property;
+select * from account;

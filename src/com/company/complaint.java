@@ -10,10 +10,10 @@ public class complaint {
         location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
     }
 
-    public void report_complaint(String username,String name) {
+    public void report_complaint() {
     }
 
-    public void assigncomplaints(String username,String name){
+    public void assigncomplaints(){
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -46,8 +46,7 @@ public class complaint {
                 System.out.println("Want to continue? Press '1'");
                 d=input.nextInt();
               }while(d==1);
-            Admin admin_obj= new Admin(username,name);
-            admin_obj.Console();
+
 
             } catch (SQLException throwables) {
             throwables.printStackTrace();

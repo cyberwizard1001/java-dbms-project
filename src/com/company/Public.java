@@ -3,19 +3,13 @@ package com.company;
 import java.util.Scanner;
 
 public class Public {
-    String name;
-    String username;
 
-    public Public(String username, String name)
-    {
-        this.username=username;
-        this.name = name;
-    }
+
 
     public void Console()  {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");
-        System.out.print("Welcome back "+(name)+"!");
+        System.out.print("Welcome back!");
         System.out.print("\n");
         System.out.println("(1)Report Complaint ");
 
@@ -25,7 +19,7 @@ public class Public {
         switch (work){
             case 1:
                 complaint complaint_obj = new complaint();
-                complaint_obj.report_complaint(username,name);
+                complaint_obj.report_complaint();
                 break;
 
 

@@ -74,7 +74,7 @@ public class    login {
 
                             if(type.equals("admin"))
                             {
-                                Admin obj = new Admin(username,name);
+                                Admin obj = new Admin();
                                 obj.Console();
                             }
 
@@ -104,7 +104,7 @@ public class    login {
 
                             else
                             {
-                                Public obj = new Public(username,name);
+                                Public obj = new Public();
                                 obj.Console();
                             }
 
