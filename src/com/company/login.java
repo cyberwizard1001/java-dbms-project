@@ -122,7 +122,7 @@ public class    login {
 
 
 
-        } catch (SQLException | IOException | ParseException ex) {
+        } catch (SQLException | IOException ex) {
             ex.printStackTrace();
         }
 
