@@ -1,15 +1,11 @@
 create schema project_trial;
-
-
 use project_trial;
-
 
 create table source (
     source_id varchar(50),
     name varchar(50),
     primary key (source_id)
 );
-
 
 insert into source values ('R123','abc');
 insert into source values ('D317','mno');

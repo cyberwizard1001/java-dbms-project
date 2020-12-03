@@ -16,6 +16,8 @@ public class ResourceE implements employee {
         this.name = name;
         emp_id=" ";
     }
+
+    @Override
     public void find_emp_id(String person){
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
@@ -44,29 +46,26 @@ public class ResourceE implements employee {
         System.out.print("\n");
         System.out.print("Welcome back "+(name)+"!");
         System.out.print("\n");
-        System.out.println("(1)Inspect Water Source ");
-        System.out.println("(2)View Complaints assigned to me ");
-        System.out.println("(3)Get details on Waste-water treatment plants ");
-        System.out.println("(4)Sign out ");
+        System.out.println("(1) Get details on Water Sources ");
+        System.out.println("(2) Inspect Water Source");
+        System.out.println("(3) Get details on Waste-water treatment plants ");
+        System.out.println("(4) View Complaints assigned to me");
+        System.out.println("(5) Sign out ");
 
         System.out.print("\n\nWhat work do you have? : ");
         int work = input.nextInt();
 
         switch (work){
             case 1:
-                inspection inspect_obj = new inspection();
-                try {
-                    inspect_obj.inspect(username,name);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+                System.out.println("Enter Source ID: ");
+                source source_obj= new source(input.next());
+                source_obj.source_details(username,name);
                 break;
 
             case 2:
-                find_emp_id(username);
-                complaint complaint_obj = new complaint();
+                inspection inspect_obj = new inspection();
                 try {
-                    complaint_obj.assignedtome(emp_id,username,name);
+                    inspect_obj.inspect(username,name);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -78,6 +77,16 @@ public class ResourceE implements employee {
                 break;
 
             case 4:
+                find_emp_id(username);
+                complaint complaint_obj = new complaint();
+                try {
+                    complaint_obj.assignedtome(emp_id,username,name);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                break;
+
+            case 5:
                 login login_obj= new login();
                 login_obj.Login();
                 break;

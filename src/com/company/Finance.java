@@ -17,7 +17,7 @@ public class Finance {
         System.out.print("\n");
         System.out.print("Welcome back "+(name)+"!");
         System.out.print("\n");
-        System.out.println("(1)Allot Approval ");
+        System.out.println("(1)Allot Approval for Projects ");
         //System.out.println("(2)Generate Report");
         System.out.println("(3)Sign out ");
 
