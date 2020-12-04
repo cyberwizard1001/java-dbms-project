@@ -45,11 +45,11 @@ public class SystemsE implements employee {
 
             while(result.next())
             {
-                String uname = result.getString(emp_id);
+                String uname = result.getString("username");
 
                 if(uname.equals(username))
                 {
-                    emp_id = result.getString(emp_id);
+                    emp_id = result.getString("emp_id");
                 }
             }
 
@@ -69,6 +69,7 @@ public class SystemsE implements employee {
 
     public void Console() throws SQLException, IOException {
         ASCIIArtService.print();
+        find_emp_id(username);
         System.out.println("Welcome, "+name);
         System.out.println("Emp ID: " + emp_id);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -99,16 +100,19 @@ public class SystemsE implements employee {
             case 3: {
                 Inventory obj = new Inventory();
                 obj.Console();
+                break;
             }
 
             case 4: {
                 Purchase obj = new Purchase(username);
                 obj.Console();
+                break;
             }
 
             default:{
                 System.out.println("Invalid input. Please try again. ");
                 Console();
+                break;
             }
         }
 

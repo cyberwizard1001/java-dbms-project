@@ -20,14 +20,16 @@ public class Purchase extends database implements employee {
 
     public void Console() throws IOException, SQLException {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("Purchase Management System\n");
+        System.out.println("\n\nPurchase Management System\n");
         System.out.println("Choose your operation: ");
         System.out.println("1. Make purchase");
         System.out.println("2. Check purchase status ");
+        System.out.println("3. Back");
 
         int choice;
         System.out.print("Choice: ");
         choice = input.nextInt();
+        System.out.print("\n\n");
 
         if(choice==1)
         {
@@ -37,6 +39,11 @@ public class Purchase extends database implements employee {
         else if(choice==2)
         {
             view_status();
+        }
+
+        else{
+            SystemsE obj = new SystemsE(emp_id,username);
+            obj.Console();
         }
     }
 
@@ -104,7 +111,7 @@ public class Purchase extends database implements employee {
 
         if (choice == 'y') {
             status = "pending";
-            String query = "insert into purchase (purchase_id,emp_id,status) values (" + purchase_id + "," + emp_id + "," + status + ")";
+            String query = "insert into purchase values ('" + purchase_id + "','" + emp_id + "',NULL,NULL,'" + status + "')";
             database obj = new database();
             obj.InsertInto(query);
         } else {
@@ -145,8 +152,7 @@ public class Purchase extends database implements employee {
 
                 String emp_id = result.getString("emp_id");
                 String purchase_id = result.getString("purchase_id");
-                String procurement_date = result.getString("procurement_date");
-                String issue_date = result.getString("issue date");
+                String issue_date = result.getString("issue_date");
                 String status = result.getString("status");
 
                 System.out.println("Purchase ID: " + purchase_id);
@@ -170,6 +176,11 @@ public class Purchase extends database implements employee {
                 }
 
                 System.out.println("\n");
+
+                System.out.print("Press any key to continue");
+                System.in.read();
+
+                Console();
 
             }
 
