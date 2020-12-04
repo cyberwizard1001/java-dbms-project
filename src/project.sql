@@ -339,14 +339,25 @@ insert into development_project values ('p2','desc2');
 insert into development_project values ('p3','desc3');
 
 create table purchase(
-    purchase_id varchar(50),
-    emp_id varchar(50),
-    procurement_date date,
-    issue_date date,
-    status varchar(50),
-    foreign key (emp_id) references employee(emp_id),
-    primary key (purchase_id)
+  purchase_id varchar(50),
+  emp_id varchar(50),
+ -- procurement_date date,
+  application_date date,
+  issue_date date,
+  status varchar(50),
+  foreign key (emp_id) references employee(emp_id),
+  primary key (purchase_id)
     );
+
+-- drop table purchase;
+
+insert into purchase values ('purchase0001','empsys01','2020-03-09','2020-04-11','approved');
+insert into purchase values ('purchase0002','empsys01','2020-02-04',NULL,'pending');
+insert into purchase values ('purchase0003','empsys01','2020-05-04',NULL,'pending');
+insert into purchase values ('purchase0004','empsys01','2020-03-04',NULL,'pending');
+insert into purchase values ('purchase0005','empsys01','2019-03-09','2019-04-11','rejected');
+
+select * from purchase where status = 'pending';
 
 create table inventory(
     purchase_id varchar(50),
@@ -359,6 +370,21 @@ create table inventory(
     primary key (serial_no),
     foreign key (purchase_id) references purchase(purchase_id)
 );
+
+-- drop table inventory;
+
+insert into inventory values('purchase0001','SDFJSDGRKF',1,'6th Gen i3, 8 gigs DDR4, 500GB HDD, GigaBit LAN','HP Pro Desktop','2022-11-20',30000);
+insert into inventory values('purchase0001','SDFJSDGRJH',1,'6th Gen i3, 8 gigs DDR4, 500GB HDD, GigaBit LAN','HP Pro Desktop','2022-11-20',30000);
+insert into inventory values('purchase0001','SDFJSSDRKF',1,'6th Gen i3, 8 gigs DDR4, 500GB HDD, GigaBit LAN','HP Pro Desktop','2022-11-20',30000);
+insert into inventory values('purchase0001','SDFJSXGRKF',1,'6th Gen i5, 16 gigs DDR4, 500GB SSD, GigaBit LAN','HP Pro Desktop','2022-11-20',30000);
+insert into inventory values('purchase0001','FGFJSDGRKF',1,'6th Gen i5, 12 gigs DDR4, 500GB SSD, GigaBit LAN','HP Pro Desktop','2022-11-20',30000);
+insert into inventory values('purchase0001','TJKJSDGRKF',1,'6th Gen i3, 4 gigs DDR4, 500GB HDD, GigaBit LAN','HP Pro Desktop','2022-11-20',30000);
+insert into inventory values('purchase0001','RGRT123GFSF',1,'Laser, 18 ppm','HP LaserJet M1136 MFP','2022-05-16',13000);
+insert into inventory values('purchase0001','RGRT123GFSG',1,'Laser, 18 ppm','HP LaserJet M1136 MFP','2022-05-16',13000);
+insert into inventory values('purchase0001','RGRT123GFSH',1,'Laser, 18 ppm','HP LaserJet M1136 MFP','2022-05-16',13000);
+insert into inventory values('purchase0001','RGRT123GFSI',1,'Laser, 18 ppm','HP LaserJet M1136 MFP','2022-05-16',13000);
+insert into inventory values('purchase0001','RGRT123GFSJ',1,'Laser, 18 ppm','HP LaserJet M1136 MFP','2022-05-16',13000);
+insert into inventory values('purchase0001','RGRT123GFSK',1,'Laser, 18 ppm','HP LaserJet M1136 MFP','2022-05-16',13000);
 
 
 insert into key_card values ('K29112020E01','2020-11-29','empwre1');
