@@ -24,15 +24,15 @@ public class inspection {
             String query1 = "select * from property";
             ResultSet result = statement.executeQuery(query1);
 
-            String source_id[]= new String[0];
-            Float ph[]= new Float[0];
-            String con[]= new String[0];
-            Date date[]= new Date[0];
+            String[] source_id = new String[0];
+            Float[] ph = new Float[0];
+            Float[] con = new Float[0];
+            Date[] date = new Date[0];
             //Dynamic Arraylists declaration
-            ArrayList<String> mylist = new ArrayList<String>(Arrays.asList(source_id));
-            ArrayList<Float> mylist2 = new ArrayList<Float>(Arrays.asList(ph));
-            ArrayList<String> mylist3 = new ArrayList<String>(Arrays.asList(con));
-            ArrayList<Date> mylist4 = new ArrayList<Date>(Arrays.asList(date));
+            ArrayList<String> mylist = new ArrayList<>(Arrays.asList(source_id));
+            ArrayList<Float> mylist2 = new ArrayList<>(Arrays.asList(ph));
+            ArrayList<Float> mylist3 = new ArrayList<>(Arrays.asList(con));
+            ArrayList<Date> mylist4 = new ArrayList<>(Arrays.asList(date));
             String query2 = "select * from property order by source_id,inspection_date desc";
             ResultSet result1 = statement.executeQuery(query2);
 
@@ -51,7 +51,7 @@ public class inspection {
                 mylist2.add(ph_element);
                 ph = mylist2.toArray(ph);
 
-                String con_element=result1.getString("contamination_level");
+                Float con_element=result1.getFloat("contamination_level");
                 mylist3.add(con_element);
                 con= mylist3.toArray(con);
             }
@@ -75,15 +75,14 @@ public class inspection {
                 j+=1;
             }
 
-            //Float.valueof => converts String to float value
             System.out.println("Sources with high contamination level: ");
-            j=0;
-            while(j< source_id.length){
-                int k=j+1,match=0;
+            int l=0;
+            while(l< source_id.length){
+                int k=l+1,match=0;
                 while(k< source_id.length && match==0){
-                    if(source_id[j]!=source_id[k]){
-                        if(Float.valueOf(con[j])>con_max) {
-                            System.out.println(source_id[j] + " " + con[j]);
+                    if(source_id[l]!=source_id[k]){
+                        if(con[l] >con_max) {
+                            System.out.println(source_id[l] + " " +con[l]);
                             match = 1;
                         }
                     }else{
@@ -91,7 +90,7 @@ public class inspection {
                     }
                     k+=1;
                 }
-                j+=1;
+                l+=1;
             }
             //back to myaccount(wre) portal
             ResourceE resource_obj= new ResourceE(username,name);

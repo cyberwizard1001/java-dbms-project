@@ -1,15 +1,11 @@
 create schema project_trial;
-
-
 use project_trial;
-
 
 create table source (
     source_id varchar(50),
     name varchar(50),
     primary key (source_id)
 );
-
 
 insert into source values ('R123','abc');
 insert into source values ('D317','mno');
@@ -47,23 +43,23 @@ insert into dam values ('D111','533','750.23');
 create table property(
     source_id varchar(50),
     inspection_date date,
-    ph_level numeric(2,1),
+    ph_level numeric(3,2),
     ppm numeric(3,0),
-    contamination_level numeric(1,0),
+    contamination_level numeric(3,2),
     primary key (source_id,inspection_date),
     foreign key (source_id) references source(source_id)
 );
 
-insert into property values ('R123','2020-11-17',6.4,400,2);
-insert into property values ('D317','2020-09-13',7.7,500,1);
-insert into property values ('R123','2020-08-21',7.9,420,2.5);
-insert into property values ('D317','2020-10-21',7.7,700,4.7);
+insert into property values ('R123','2020-11-17',6.43,400,2.77);
+insert into property values ('D317','2020-09-13',7.17,500,1.5);
+insert into property values ('R123','2020-08-21',7.91,420,2.5);
+insert into property values ('D317','2020-10-21',7.17,700,4.7);
 insert into property values ('R745','2020-11-17',7.8,450,3);
-insert into property values ('R908','2020-09-14',8.9,430,4.5);
-insert into property values ('D635','2020-07-09',5.6,459,5);
-insert into property values  ('R742','2020-07-07',4,346,3.3);
-insert into property values ('R908','2020-11-29',7.8,400,3);
-insert into property values ('D111','2020-06-05',6.9,487,4.12);
+insert into property values ('R908','2020-09-14',8.9,430,4.51);
+insert into property values ('D635','2020-07-09',5.65,459,5);
+insert into property values  ('R742','2020-07-07',4.77,346,3.32);
+insert into property values ('R908','2020-11-29',7.68,400,3.03);
+insert into property values ('D111','2020-06-05',6.89,487,4.12);
 
 create table area(
     location_id varchar(50),
@@ -276,7 +272,7 @@ create table budget_and_tally(
 );
 
 select * from project;
-
+select * from budget_and_tally;
 insert into budget_and_tally values ('empwre1','tp01',50000,50000);
 insert into budget_and_tally values ('empwre1','tp05',45000,45000);
 insert into budget_and_tally values ('empwre1','ts01',60000,60000);
@@ -302,7 +298,7 @@ insert into complaints values ('public2','c4','unlicensed industry','complete','
 insert into complaints values ('public3','c5','connection problem','pending','2020-09-21','emppe1');
 insert into complaints values ('public1','c6','p1','pending','2020-09-09','empad1');
 update complaints set assigned_to='empad1' where complaint_id='c0';
-delete from complaints where complaint_id='c7';
+delete from complaints where complaint_id='c6';
 
 create table project(
     project_id varchar(50),
@@ -392,3 +388,7 @@ insert into key_card values ('K29112020E05','2020-11-29','empwre1');
 
 
 select * from complaints;
+select * from property;
+select * from waste_water_management;
+select * from purification;
+select * from property;

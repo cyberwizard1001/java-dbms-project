@@ -1,6 +1,7 @@
 package com.company;
 
 public interface river {
-    final String river_id=" ";
-    final double length = 0;
+
+    public void river_details(String username,String name);
+
 }
