@@ -357,6 +357,7 @@ insert into purchase values ('purchase0003','empsys01','2020-05-04',NULL,'pendin
 insert into purchase values ('purchase0004','empsys01','2020-03-04',NULL,'pending');
 insert into purchase values ('purchase0005','empsys01','2019-03-09','2019-04-11','rejected');
 
+-- update purchase set status = 'pending' where purchase_id = 'purchase0002';
 select * from purchase where status = 'pending';
 
 create table inventory(
