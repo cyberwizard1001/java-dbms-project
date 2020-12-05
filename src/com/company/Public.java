@@ -1,6 +1,7 @@
 package com.company;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Public {
@@ -10,7 +11,8 @@ public class Public {
         this.username = username;
         this.name = name;
     }
-    public void Console() throws SQLException {
+
+    public void Console() throws SQLException, ParseException {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");
         System.out.print("Welcome back!");
