@@ -202,21 +202,26 @@ create table connection(
     primary key (connection_id),
     foreign key (location_id) references area(location_id)
 );
+-- drop table connection;
 
-insert into connection values ('C023','domestic','L1');
-insert into connection values ('C088','commercial','L2');
-insert into connection values ('C035','domestic','L3');
-insert into connection values ('C034','domestic','L4');
+insert into connection values ('CO23','domestic','L1');
+insert into connection values ('CO88','commercial','L2');
+insert into connection values ('CO35','domestic','L3');
+insert into connection values ('CO34','domestic','L4');
 
 create table connection_req(
-    connection_id varchar(50),
+    username varchar(50),
     type varchar(50),
     location_id varchar(50),
     status varchar(50),
-    primary key (connection_id),
+    primary key (username),
     foreign key (location_id) references area(location_id)
 );
-insert into connection_req values('C023','domestic','L1','pending');
+-- insert into connection_req values('public1',)
+
+-- drop table connection_req;
+
+insert into connection_req values('public1','domestic','L1','pending');
 
 create table public_connection(
     username varchar(50),
@@ -224,11 +229,11 @@ create table public_connection(
     foreign key (connection_id) references connection(connection_id),
     foreign key (username) references account(username)
 );
-
-insert into public_connection values ('public1','C023');
-insert into public_connection values ('public2','C088');
-insert into public_connection values ('public3','C034');
-insert into public_connection values ('public4','C034');
+-- drop table public_connection;
+insert into public_connection values ('public1','CO23');
+insert into public_connection values ('public2','CO88');
+insert into public_connection values ('public3','CO34');
+insert into public_connection values ('public4','CO34');
 
 create table payment(
     transaction_id varchar(50),
@@ -402,3 +407,9 @@ select * from waste_water_management;
 select * from purification;
 select * from property;
 select * from employee;
+
+select * from connection;
+select * from connection_req;
+select * from public_connection;
+
+select substring(connection_id,3) AS ExtractString FROM connection order by ExtractString desc;

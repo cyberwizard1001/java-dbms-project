@@ -9,7 +9,7 @@ public class Admin extends database {
     String username;
     String password;
     String type;
-    String emp_id="";
+    String emp_id = "";
     String dob;
     String doj;
     int salary;
@@ -21,8 +21,7 @@ public class Admin extends database {
     }
 
     //checking username existence function:
-    public boolean check_username(String uname)
-    {
+    public boolean check_username(String uname) {
 
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
@@ -56,7 +55,6 @@ public class Admin extends database {
     }
 
 
-
     //adding employee function:
     public void addemp() throws SQLException {
 
@@ -78,20 +76,20 @@ public class Admin extends database {
             System.out.println("enter employee name");
             name = input.next();
             System.out.println("enter password");
-            password=input.next();
+            password = input.next();
             System.out.println("enter type");
-            user_choice=input.nextInt();
-            switch(user_choice){
+            user_choice = input.nextInt();
+            switch (user_choice) {
                 case 1://wre
-                    type="wre";
+                    type = "wre";
                     break;
 
                 case 2://sysengg
-                    type="sysadmin";
+                    type = "sysadmin";
                     break;
 
                 case 3://prj engg
-                    type="project engineer";
+                    type = "project engineer";
                     break;
 
                 default:
@@ -99,31 +97,114 @@ public class Admin extends database {
 
             }
 
-            k=check_username(username);
+            k = check_username(username);
 //if there is no matching username value  in accounts table,this function assings k with true value
-            if(k){
-                String query = "insert into account values('" + username + "','" + name + "','"+ password + "','"+type+"')";
+            if (k) {
+                String query = "insert into account values('" + username + "','" + name + "','" + password + "','" + type + "')";
                 InsertInto(query);
 
                 //now should insert values into employee table
-                emp_id="emp"+username;
+                emp_id = "emp" + username;
                 System.out.println("enter date of birth");
-                dob=input.next();
+                dob = input.next();
                 System.out.println("enter date of join");
-                doj=input.next();
+                doj = input.next();
                 System.out.println("enter salary");
-                salary=input.nextInt();
-                String query1="insert into employee values('" + username + "','" + emp_id + "','" + name + "','"+ salary + "','"+ dob +"','"+ doj +"')";
+                salary = input.nextInt();
+                String query1 = "insert into employee values('" + username + "','" + emp_id + "','" + name + "','" + salary + "','" + dob + "','" + doj + "')";
                 InsertInto(query1);
 
-            }
-            else{
-                System.out.println("Sorry! Username already exis1ts!");
+            } else {
+                System.out.println("Sorry! Username already exists!");
             }
 
         }
 
     }
+    //to get no.of connections from public table
+ public void get_noc(String uname,String type ,String lid) {
+
+     String url = "jdbc:mysql://localhost:3306/project_trial";
+     String pw = "n";
+     String user = "root";
+
+     try (
+             Connection connection = DriverManager.getConnection(url, user, pw);
+             Statement statement = connection.createStatement();
+
+     ) {
+
+
+         String query = "select username,no_of_connections from public";
+         ResultSet result = statement.executeQuery(query);
+
+         int noc,l,cid=0;
+         String un;
+         String connection_id;
+
+         int flag=0,flag1=0,flag2=0;
+         while (result.next() && flag==0) {
+             noc= result.getInt("no_of_connections");
+             un=result.getString("username");
+             if(un.equals(uname)){
+
+                 noc=noc+1;
+                 flag=-1;
+
+                 String query1 = "update public set no_of_connections="+noc+" where username='"+uname+"'";
+                 Update(query1);
+                 System.out.println("updated in public relation!");
+
+                 String query2 = "select no_of_connections from area where location_id='"+lid+"'";
+                 ResultSet result1 = statement.executeQuery(query2);
+                 while(result1.next() && flag1==0){
+                     l=result.getInt("no_of_connections");
+                     l=l+1;
+                     flag1=-1;
+
+                     String query3 = "update area set no_of_connections="+l+" where location_id='"+lid+"'";
+                     Update(query3);
+                     System.out.println("updated in area relation!");
+                 }
+
+
+                 String query4 = "select substring(connection_id,3) AS ExtractString FROM connection order by ExtractString desc;";
+                 ResultSet result2 = statement.executeQuery(query4);
+
+
+                 while(result2.next() && flag2==0){
+                     String key=result2.getString("ExtractString");
+                     cid=Integer.parseInt(key);
+                     flag2=-1;
+                 }
+                 cid=cid+1;
+                 connection_id="CO"+cid;
+
+                 String query5= "insert into public_connection values('" + username + "','" + connection_id + "')";
+                 InsertInto(query5);
+
+                 System.out.println("inserted into public connections");
+
+                 String query6= "insert into connection values('"+ connection_id+ "','" + type+ "','"+lid+ "')";
+                 InsertInto(query6);
+
+                 System.out.println("inserted into connections");
+
+                 String query7= "update connection_req set status='approved' where username='"+uname+"'";
+                 Update(query7);
+                 System.out.println("updated in connection_req relation!");
+
+
+             }
+         }
+     }
+
+     catch (SQLException e) {
+         e.printStackTrace();
+     }
+
+ }
+//updating public table
 
     //adding a new connection
 
@@ -139,13 +220,19 @@ public class Admin extends database {
             String query = "select * from Connection_req where status='pending'";
             ResultSet result = statement.executeQuery(query);
 
+
             while (result.next()) {
-                String resultset = result.getString("username");
-                if (uname.equals(username)) {
-                    return ;
-                }
+                String uname = result.getString("username");
+                String type=result.getString("type");
+                String lid=result.getString("location_id");
+                String sts=result.getString("status");
+
+                get_noc(uname,type,lid);
+
+
+
             }
-            return ;
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -163,10 +250,9 @@ public class Admin extends database {
         System.out.print("\n");
         System.out.println("(1)Assign complaints to Engineers");
         System.out.println("(2)Add Employee");
-        //System.out.println("(3)Remove Employee");
-        System.out.println("(4)Add Connection");
-        System.out.println("(5)Remove Connection");
-        System.out.println("(6)Sign out");
+        System.out.println("(3)Add Connection");
+        //System.out.println("(5)Remove Connection");
+        System.out.println("(4)Sign out");
 
         System.out.print("\n\nWhat work do you have? : ");
         int work = input.nextInt();
@@ -180,10 +266,12 @@ public class Admin extends database {
                 addemp();
 
                 break;
+
             case 3:
+                addconnec();
                 break;
             case 4:
-                //addconnec();
+                login l_ob=new login();
                 break;
 
             default:
