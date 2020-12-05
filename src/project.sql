@@ -216,6 +216,7 @@ create table connection_req(
     primary key (connection_id),
     foreign key (location_id) references area(location_id)
 );
+insert into connection_req values('C023','domestic','L1','pending');
 
 create table public_connection(
     username varchar(50),
@@ -400,3 +401,4 @@ select * from property;
 select * from waste_water_management;
 select * from purification;
 select * from property;
+select * from employee;

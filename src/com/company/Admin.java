@@ -128,6 +128,29 @@ public class Admin extends database {
     //adding a new connection
 
     public void addconnec(){
+        String url = "jdbc:mysql://localhost:3306/project_trial";
+        String pw = "n";
+        String user = "root";
+
+        try (
+                Connection connection = DriverManager.getConnection(url, user, pw);
+                Statement statement = connection.createStatement();
+        ) {
+            String query = "select * from Connection_req where status='pending'";
+            ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+                String resultset = result.getString("username");
+                if (uname.equals(username)) {
+                    return ;
+                }
+            }
+            return ;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
 
     }
@@ -155,6 +178,7 @@ public class Admin extends database {
                 break;
             case 2:
                 addemp();
+
                 break;
             case 3:
                 break;
