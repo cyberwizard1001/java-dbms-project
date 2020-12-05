@@ -73,9 +73,13 @@ public class Admin extends database {
             int user_choice;
             boolean k;
             Scanner input = new Scanner(System.in).useDelimiter("\n");
+            System.out.println("enter username");
             username = input.next();
+            System.out.println("enter employee name");
             name = input.next();
+            System.out.println("enter password");
             password=input.next();
+            System.out.println("enter type");
             user_choice=input.nextInt();
             switch(user_choice){
                 case 1://wre
@@ -98,20 +102,23 @@ public class Admin extends database {
             k=check_username(username);
 //if there is no matching username value  in accounts table,this function assings k with true value
             if(k){
-                String query = "insert into accounts values('" + username + "','" + name + "','"+ password + "','"+type+"')";
+                String query = "insert into account values('" + username + "','" + name + "','"+ password + "','"+type+"')";
                 InsertInto(query);
 
                 //now should insert values into employee table
                 emp_id="emp"+username;
+                System.out.println("enter date of birth");
                 dob=input.next();
+                System.out.println("enter date of join");
                 doj=input.next();
+                System.out.println("enter salary");
                 salary=input.nextInt();
                 String query1="insert into employee values('" + username + "','" + emp_id + "','" + name + "','"+ salary + "','"+ dob +"','"+ doj +"')";
                 InsertInto(query1);
 
             }
             else{
-                System.out.println("Sorry! Username already exixts!");
+                System.out.println("Sorry! Username already exis1ts!");
             }
 
         }
