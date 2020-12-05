@@ -111,8 +111,8 @@ create table account(
     type varchar(50)
 );
 
-select * from account;
-
+select * from account where type='wre';
+select * from account where type='public';
 insert into account values ('wre1','Ram','pwdwre1','wre');
 insert into account values ('public1','Arya','pwdpub1','public');
 insert into account values ('public2','Neya','pwdpub2','public');
@@ -290,16 +290,15 @@ create table complaints(
     foreign key (username) references public(username)
 );
 
+drop table complaints;
 select * from complaints;
-select substring(complaint_id,2) AS ExtractString FROM complaints order by ExtractString desc;
+select substring(complaint_id,2,3) AS ExtractString FROM complaints order by ExtractString + 0 desc;
 insert into complaints values ('public1','c1','ground water contamination','pending','2020-06-23','empwre1');
 insert into complaints values ('public1','c2','unlicensed industry','pending','2020-11-02','empwre1');
 insert into complaints values ('public2','c3','sand laundering','pending','2020-10-24','empwre1');
 insert into complaints values ('public2','c4','unlicensed industry','complete','2020-04-09','empwre1');
 insert into complaints values ('public3','c5','connection problem','pending','2020-09-21','emppe1');
-insert into complaints values ('public1','c6','p1','pending','2020-09-09','empad1');
-update complaints set assigned_to='empad1' where complaint_id='c0';
-delete from complaints where complaint_id='c6';
+
 
 create table project(
     project_id varchar(50),
@@ -325,7 +324,7 @@ create table complaint_resolution(
     foreign key (project_id) references project(project_id),
     primary key (project_id)
 );
-
+drop table complaint_resolution;
 insert into complaint_resolution values ('c1','p4','sol2');
 
 create table development_project(

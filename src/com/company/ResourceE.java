@@ -64,11 +64,7 @@ public class ResourceE implements employee {
 
             case 2:
                 inspection inspect_obj = new inspection();
-                try {
-                    inspect_obj.inspect(username,name);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+                inspect_obj.inspect(username,name);
                 break;
 
             case 3:
@@ -79,11 +75,7 @@ public class ResourceE implements employee {
             case 4:
                 find_emp_id(username);
                 complaint complaint_obj = new complaint();
-                try {
-                    complaint_obj.assignedtome(emp_id,username,name);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+                complaint_obj.assignedtome(emp_id,username,name);
                 break;
 
             case 5:
