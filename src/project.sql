@@ -61,6 +61,7 @@ insert into property values  ('R742','2020-07-07',4.77,346,3.32);
 insert into property values ('R908','2020-11-29',7.68,400,3.03);
 insert into property values ('D111','2020-06-05',6.89,487,4.12);
 
+
 create table area(
     location_id varchar(50),
     dam_id varchar(50),
@@ -153,7 +154,7 @@ select * from employee;
 
 insert into employee values ('wre1','empwre1','Ram',55000,'1997-09-07','2019-03-28');
 insert into employee values ('ad1','empad1','Tarsana',79000,'1982-08-07','2005-07-03');
-insert into employee values ('f1','empf1','Rithika',47000,'1992-08-06','2018-09-08');
+insert into employee values ('f1','empf1','Nisha',47000,'1992-08-06','2018-09-08');
 insert into employee values ('pe1','emppe1','Vinaya',67000,'1995-01-03','2017-08-23');
 insert into employee values ('sys01','empsys01','Nirmal',65000,'1997-09-07','2019-03-28');
 
@@ -393,9 +394,11 @@ insert into key_card values ('K29112020E03','2020-11-29','empad1');
 insert into key_card values ('K29112020E04','2020-11-29','empwre1');
 insert into key_card values ('K29112020E05','2020-11-29','empwre1');
 
-
+select * from source;
+select * from dam;
+select * from river;
 select * from complaints;
 select * from property;
 select * from waste_water_management;
 select * from purification;
-select * from property;
+select * from account;

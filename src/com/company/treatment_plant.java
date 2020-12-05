@@ -1,4 +1,5 @@
 package com.company;
+
 import java.util.*;
 import  java.sql.*;
 
@@ -74,8 +75,5 @@ public class treatment_plant {
         catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-
-
     }
 }

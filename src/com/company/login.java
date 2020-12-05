@@ -33,7 +33,7 @@ public class    login {
         String user = "root";
 
         //step 1 - create a connection object to connect to the db in question - project]
-        try (
+   /*     try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
 
                 //step 2 - create a statement object
@@ -74,7 +74,7 @@ public class    login {
 
                             if(type.equals("admin"))
                             {
-                                Admin obj = new Admin(username,name);
+                                Admin obj = new Admin();
                                 obj.Console();
                             }
 
@@ -104,7 +104,7 @@ public class    login {
 
                             else
                             {
-                                Public obj = new Public(username,name);
+                                Public obj = new Public();
                                 obj.Console();
                             }
 
@@ -124,7 +124,7 @@ public class    login {
 
         } catch (SQLException | IOException ex) {
             ex.printStackTrace();
-        }
+        }*/
 
     }
 
