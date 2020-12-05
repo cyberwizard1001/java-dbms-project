@@ -1,5 +1,6 @@
 package com.company;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class complaint {
@@ -10,10 +11,39 @@ public class complaint {
         location= new String[]{"Gandhipuram","Siddhapudur","Sungam","Peelamedu","Saibaba Colony","Race Course"};
     }
 
-    public void report_complaint() {
+    public void report_complaint(String username,String name) throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/project_trial";
+        String pw = "n";
+        String user = "root";
+
+        Connection connection = DriverManager.getConnection(url, user, pw);
+        Statement statement = connection.createStatement();
+
+        System.out.println("Issue: ");
+        String i=input.nextLine();
+        System.out.println("Date: ");
+        String date = input.next();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String query3="select substring(complaint_id,2) AS ExtractString FROM complaints order by ExtractString desc";
+        ResultSet primarykey= statement.executeQuery(query3);
+
+        int complaint_id=0;
+        int match=0;
+        while(primarykey.next() && match==0){
+            String pk=primarykey.getString("ExtractString");
+            complaint_id=Integer.parseInt(pk);
+            match=1;
+        }
+        complaint_id=complaint_id+1;
+        String query2="insert into complaints "+ "values ('"+username+"','c"+complaint_id+"','"+i+"','pending','"+date+"','empad1')";
+        statement.execute(query2);
+        System.out.println("Complaint recorded");
+
+        Public public_obj= new Public(username,name);
+        public_obj.Console();
     }
 
-    public void assigncomplaints(){
+    public void assigncomplaints(String useername,String name){
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
