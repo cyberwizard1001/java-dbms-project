@@ -75,8 +75,5 @@ public class treatment_plant {
         catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-
-
     }
 }

@@ -3,6 +3,12 @@ package com.company;
 import java.util.Scanner;
 
 public class Admin{
+    String username,name;
+    public Admin(String username, String name){
+        this.username=username;
+        this.name=name;
+    }
+
     public void Console() {
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.print("\n");
