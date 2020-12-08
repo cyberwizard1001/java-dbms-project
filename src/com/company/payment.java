@@ -72,7 +72,7 @@ public class payment extends database,consumer {
 
     }
 
-    public void Console() throws SQLException {
+    public void main() throws SQLException{
 
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.println("press 2 to know your payment details ");
