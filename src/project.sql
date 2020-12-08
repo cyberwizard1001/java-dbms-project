@@ -401,3 +401,5 @@ select * from property;
 select * from waste_water_management;
 select * from purification;
 select * from account;
+
+select * from public;
