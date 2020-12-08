@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class payment extends database,consumer {
 
-}
+
     String username;
     String transaction_id;
 
