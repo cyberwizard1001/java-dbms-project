@@ -1,11 +1,10 @@
 package com.company;
 
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Scanner;
 
-public class payment extends database,consumer {
+public class payment extends database {
 
 
     String username;
@@ -57,7 +56,7 @@ public class payment extends database,consumer {
 
             ResultSet result1 = statement.executeQuery(sql1);
 
-            while (result.next()) {
+            while (result1.next()) {
 
                 String mode = result1.getString("payment_mode");
                 double amt = result1.getDouble("amt_paid");
