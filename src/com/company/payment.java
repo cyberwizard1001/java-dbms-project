@@ -75,21 +75,18 @@ public class payment extends database,consumer {
     public void Console() throws SQLException {
 
         Scanner input = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("press 1 : for updating existing locality");
-        int reply = input.nextInt();
+        System.out.println("press 2 to know your payment details ");
+        int r = input.nextInt();
         String username = input.next();
+        String transaction_id=input.next();
+        payment p = new payment(username,transaction_id);
+        if(r==2){
+       p.getdetails();
+       p.get_other_details();}
+        else{
+            System.out.println("invalid option selected");}
 
-        consumer obj = new consumer(username);
-        switch (reply) {
-            case 1:
-                if(obj.check_existing_username()){
-                    obj.update_address();}
-                break;
-
-            default:
-                System.out.println("invalid choose!");
-        }
-    }
+}
 }
 
 
