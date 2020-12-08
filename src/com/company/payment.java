@@ -48,7 +48,7 @@ public class payment extends database,consumer {
         String pw = "n";
         String user = "root";
 
-        String sql1 = "SELECT no_of_connections FROM payment"
+        String sql1 = "SELECT payment_mode,amt_paid,units_consumed FROM payment"
                 + "WHERE transaction_id = this.transaction_id";
 
         try (
