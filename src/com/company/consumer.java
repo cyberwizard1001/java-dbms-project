@@ -28,8 +28,6 @@ public class consumer extends database {
         ) {
 
 
-            Scanner input = new Scanner(System.in).useDelimiter("\n");
-
             Statement statement = connection.createStatement()
             ResultSet result = statement.executeQuery(query);
 
@@ -60,7 +58,6 @@ public class consumer extends database {
 
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
-
                 PreparedStatement pstmt = connection.prepareStatement(sqlUpdate))
 
         {
@@ -92,7 +89,7 @@ public class consumer extends database {
                 break;
 
             default:
-                System.out.println("invalid chose!");
+                System.out.println("invalid choose!");
         }
     }
 
