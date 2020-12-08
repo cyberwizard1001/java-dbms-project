@@ -36,7 +36,7 @@ public class consumer extends database {
             while (result.next()) {
                 String uname = result.getString("username");
                 if (uname.equals(this.username)) {
-                    return true
+                    return true;
                 }
             }
             return true;
@@ -77,7 +77,7 @@ public class consumer extends database {
 
     }
 
-    public void mainconsole() throws SQLException {
+    public void Console() throws SQLException {
 
         Scanner input = new Scanner(System.in).useDelimiter("\n");
         System.out.println("press 1 : for updating existing locality");
