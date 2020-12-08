@@ -23,7 +23,7 @@ public class consumer extends database {
 
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
 
         ) {
 
