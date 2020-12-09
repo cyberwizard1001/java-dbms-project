@@ -66,9 +66,11 @@ public class treatment_plant {
                 }
             }
             if(found!=1){
-                System.out.println(("Check the Waste Water Treatment Plant Name!"));
+                System.out.println(("Check the Waste Water Treatment Plant Name, Try Again!\n"));
+                treatment_plant retry_obj= new treatment_plant();
+                retry_obj.plant_details(username, name);
             }
-            System.out.println("    ");
+            System.out.println("\n");
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
         }

@@ -79,12 +79,14 @@ public class ResourceE implements employee {
                 break;
 
             case 5:
+                System.out.println("\n");
                 login login_obj= new login();
                 login_obj.Login();
                 break;
 
             default:
-                System.out.println("Invalid Chose!");
+                System.out.println("Invalid Chose!\n");
+                System.out.println("\n");
                 Console();
             }
         }

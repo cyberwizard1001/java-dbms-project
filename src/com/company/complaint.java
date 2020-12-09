@@ -43,6 +43,7 @@ public class complaint {
             String query2 = "insert into complaints " + "values ('" + username + "','c" + complaint_id + "','" + i + "','pending','" + date + "','empad1')";
             statement.execute(query2);
             System.out.println("Complaint recorded");
+            System.out.println("\n");
             Public public_obj = new Public(username, name);
             public_obj.Console();
         }catch(SQLException throwables)
@@ -52,7 +53,7 @@ public class complaint {
 
     }
 
-    public void assigncomplaints(String username,String name){
+    public void assigncomplaints(String username,String name) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -62,31 +63,37 @@ public class complaint {
         ) {
             String query1 = "select * from complaints";
             ResultSet result = statement.executeQuery(query1);
+            String[] complaint_id = new String[0];
+            String[] issue = new String[0];
+            ArrayList<String> mylist = new ArrayList<>(Arrays.asList(complaint_id));
+            ArrayList<String> mylist1 = new ArrayList<>(Arrays.asList(issue));
             System.out.println("*** Complaints that is needed to be assigned to the engineers ***");
 
             while(result.next()){
-                String complaint_id=result.getString("complaint_id");
                 String assigned_to=result.getString("assigned_to");
-                String issue=result.getString("issue");
+
                 if(assigned_to.compareTo("empad1")==0){
-                    System.out.println(complaint_id+" "+issue);
+                    String c_id=result.getString("complaint_id");
+                    mylist.add(c_id);
+                    complaint_id = mylist.toArray(complaint_id);
+
+                    String prob=result.getString("issue");
+                    mylist1.add(prob);
+                    issue = mylist1.toArray(issue);
                    }
                 }
 
-            int d=0;
-            do{
-                System.out.println("Assign to: ");
-                System.out.print("Complaint_id: ");
-                String c=input.next();
-                System.out.println("Assign to(enter emp_id): ");
-                String e=input.next();
-                String query5="update complaints set assigned_to='"+e+"' where complaint_id='"+c+"'";
+            for(int y=0;y<complaint_id.length;y++){
+                System.out.println("complaint_id: "+complaint_id[y]);
+                System.out.println("Issue: "+issue[y]);
+                System.out.print("Assign to: ");
+                String e_id=input.next();
+                String query5="update complaints set assigned_to='"+e_id+"' where complaint_id='"+complaint_id[y]+"'";
                 statement.executeUpdate(query5);
-                System.out.println("Want to continue? Press '1'");
-                d=input.nextInt();
-              }while(d==1);
-
-
+            }
+            System.out.println("\n");
+            Admin admin_obj= new Admin(username,name);
+            admin_obj.Console();
             } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -119,6 +126,7 @@ public class complaint {
                         }
             }
             result.close();
+            System.out.println("\n");
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
         } catch (SQLException ex) {

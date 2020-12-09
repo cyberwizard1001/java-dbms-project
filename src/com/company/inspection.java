@@ -93,6 +93,7 @@ public class inspection {
                 l+=1;
             }
             //back to myaccount(wre) portal
+            System.out.println("\n");
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
     } catch (SQLException ex) {

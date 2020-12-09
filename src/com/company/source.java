@@ -58,6 +58,7 @@ public class source implements river,dam {
                     System.out.println(("River length: " + result2.getString(3)) + "m");
                 }
             }
+            System.out.println("\n");
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
         } catch (SQLException throwables) {
@@ -80,6 +81,7 @@ public class source implements river,dam {
                     System.out.println(("River length: " + result2.getString(3)) + "m");
                 }
             }
+            System.out.println("\n");
             ResourceE resource_obj= new ResourceE(username,name);
             resource_obj.Console();
         } catch (SQLException throwables) {
