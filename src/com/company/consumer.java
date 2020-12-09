@@ -1,9 +1,8 @@
 package com.company;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Scanner;
 
 public class consumer extends database {
 
@@ -28,8 +27,8 @@ public class consumer extends database {
         ) {
 
 
-            Statement statement = connection.createStatement()
-            ResultSet result = statement.executeQuery(query);
+            Statement statements = connection.createStatement();
+            ResultSet result = statements.executeQuery(query);
 
             while (result.next()) {
                 String uname = result.getString("username");
@@ -46,7 +45,7 @@ public class consumer extends database {
 
     }
 
-    public void update_address() {
+    public void update_address() throws SQLException {
 
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";

@@ -1,16 +1,11 @@
 package com.company;
-
-
 import java.sql.*;
-import java.util.Scanner;
 
 public class payment extends database {
-
-
     String username;
     String transaction_id;
 
-    public payment(String username,String transaction_id) {
+    public payment(String username, String transaction_id) {
         this.username=username;
         this.transaction_id=transaction_id;
     }
@@ -21,19 +16,17 @@ public class payment extends database {
         String pw = "n";
         String user = "root";
 
-        String sql = "SELECT no_of_connections FROM public" + "WHERE username = this.username";
-
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
-                Statement statement = connection.createStatement();) {
-
-
-            Scanner input = new Scanner(System.in).useDelimiter("\n");
+                Statement statement = connection.createStatement();
+            )
+        {
+            String sql = "select no_of_connections from public " + "where username = '"+username+"'";
             ResultSet result = statement.executeQuery(sql);
-
+            System.out.println("*** Detail 0n number of Connection ***");
             while (result.next()) {
                 int noc = result.getInt("no_of_connections");
-                System.out.println("no of connections : " + noc);
+                System.out.println("Number of Connections : " + noc);
             }
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -42,18 +35,16 @@ public class payment extends database {
     }
 
     public void get_other_details() {
-
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
 
-        String sql1 = "SELECT payment_mode,amt_paid,units_consumed FROM payment"
-                + "WHERE transaction_id = this.transaction_id";
-
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
-                Statement statement = connection.createStatement();) {
-
+                Statement statement = connection.createStatement();
+           )
+        {
+            String sql1 = "SELECT payment_mode,amt_paid,units_consumed FROM payment " + "WHERE transaction_id = '"+transaction_id+"'";
             ResultSet result1 = statement.executeQuery(sql1);
 
             while (result1.next()) {
@@ -71,25 +62,6 @@ public class payment extends database {
 
     }
 
-    public void main() throws SQLException{
 
-        Scanner input = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("press 2 to know your payment details ");
-        int r = input.nextInt();
-        String username = input.next();
-        String transaction_id=input.next();
-        payment p = new payment(username,transaction_id);
-        if(r==2){
-       p.getdetails();
-       p.get_other_details();}
-        else{
-            System.out.println("invalid option selected");}
 
 }
-}
-
-
-
-
-
-//enter your consumer id , transaction id to know your payment details

@@ -41,6 +41,7 @@ public class Public {
         System.out.print("\n");
         System.out.println("(1)Report Complaint ");
         System.out.println("(2)Update Address ");
+        System.out.println("(3)Know my payment details ");
 
         System.out.print("\n\nWhat work do you have? : ");
         int work = input.nextInt();
@@ -62,8 +63,16 @@ public class Public {
                 update_address(t,q,p);
                 break;
 
+            case 3:
+                System.out.println("Enter transaction_id: ");
+                payment pay = new payment(username,input.next());
+                pay.getdetails();
+                pay.get_other_details();
+                break;
+
             default:
             System.out.println("invalid chose!");
+            Console();
         }
     }
 }

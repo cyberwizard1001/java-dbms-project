@@ -85,6 +85,7 @@ public class ResourceE implements employee {
 
             default:
                 System.out.println("Invalid Chose!");
+                Console();
             }
         }
 }
