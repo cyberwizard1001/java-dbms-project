@@ -12,7 +12,7 @@ public class Public {
         this.name = name;
     }
 
-    public void update_address(String p) throws SQLException {
+    public void update_address(String t, String q ,String p) throws SQLException {
 
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
@@ -23,7 +23,7 @@ public class Public {
                 Statement pstmt = connection.createStatement())
 
         {
-            String sqlUpdate = "update public set locality = '"+p+ "' where username = '"+username+"'";
+            String sqlUpdate = "update public set door_num = '"+t+ "' , street = '"+q+ "' ,locality = '"+p+ "' where username = '"+username+"'";
             System.out.println(sqlUpdate);
             pstmt.executeUpdate(sqlUpdate);
             System.out.println("Updated successfully!");
@@ -53,9 +53,13 @@ public class Public {
                 break;
 
             case 2:
+                System.out.println("Enter new door no: ");
+                String t= input.next();
+                System.out.println("Enter new street name: ");
+                String q= input.next();
                 System.out.println("Enter new locality: ");
                 String p= input.next();
-                update_address(p);
+                update_address(t,q,p);
                 break;
 
             default:

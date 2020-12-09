@@ -66,8 +66,6 @@ public class consumer extends database {
             pstmt.setString(1, locality);
 
 
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
