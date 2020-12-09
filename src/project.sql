@@ -306,15 +306,31 @@ insert into complaints values ('public1','c6','p1','pending','2020-09-09','empad
 update complaints set assigned_to='empad1' where complaint_id='c0';
 delete from complaints where complaint_id='c6';
 
+--- create table project(
+    --- project_id varchar(50),
+    --- emp_id varchar(50),
+    --- project_name varchar(50),
+    --- approval varchar(50),
+    --- start_date date,
+    --- due_date date,
+    --- primary key (project_id),
+    --- foreign key (emp_id) references employee(emp_id)
+--- );
+
+--- RUN THIS ---
+
+drop table project;
+
 create table project(
-    project_id varchar(50),
-    emp_id varchar(50),
-    project_name varchar(50),
-    approval varchar(50),
-    start_date date,
-    due_date date,
-    primary key (project_id),
-    foreign key (emp_id) references employee(emp_id)
+project_id varchar(50),
+emp_id varchar(50),
+project_name varchar(50),
+approval varchar(50),
+project_stat varchar(50),
+start_date date,
+due_date date,
+primary key (project_id),
+foreign key (emp_id) references employee(emp_id)
 );
 
 insert into project values ('p1','emppe1','dam construction','pending','2020-06-23','2020-12-15');
