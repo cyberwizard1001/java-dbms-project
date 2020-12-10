@@ -333,10 +333,10 @@ primary key (project_id),
 foreign key (emp_id) references employee(emp_id)
 );
 
-insert into project values ('p1','emppe1','dam construction','pending','2020-06-23','2020-12-15');
-insert into project values ('p2','emppe1','irrigation project','pending','2020-11-02','2021-05-09');
-insert into project values ('p3','emppe1','rejuvenate lake','complete','2020-10-24','2021-03-06');
-insert into project values ('p4','emppe1','checked /altered connections','complete','2020-10-01','2020-11-01');
+insert into project values ('p1','emppe1','dam construction','pending','pending','2020-06-23','2020-12-15');
+insert into project values ('p2','emppe1','irrigation project','pending','pending','2020-11-02','2021-05-09');
+insert into project values ('p3','emppe1','rejuvenate lake','complete','completed','2020-10-24','2021-03-06');
+insert into project values ('p4','emppe1','checked /altered connections','complete','pending','2020-10-01','2020-11-01');
 
 create table complaint_resolution(
     complaint_id varchar(50),

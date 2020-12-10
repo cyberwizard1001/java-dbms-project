@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 
-public class Admin extends database {
+public class Admin {
     String name;
     String username;
     String password;
@@ -14,6 +14,54 @@ public class Admin extends database {
     String doj;
     int salary;
 
+
+    public String uname = "root";
+    public String pw = "n";
+    public String url = "jdbc:mysql://localhost:3306/project_trial";
+
+    public void InsertInto(String query) throws SQLException
+    {
+        int rowsAffected = 0;
+        try(
+                Connection connection = DriverManager.getConnection(url,uname,pw);
+
+                Statement statement = connection.createStatement();
+        )
+
+        {
+            rowsAffected = statement.executeUpdate(query);
+            System.out.println(rowsAffected+" rows have been inserted");
+        }
+
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+
+
+
+    }
+
+    public void Update(String query) throws SQLException
+    {
+        int rowsAffected = 0;
+        try(
+                Connection connection = DriverManager.getConnection(url,uname,pw);
+
+                Statement statement = connection.createStatement();
+        )
+        {
+            rowsAffected    = statement.executeUpdate(query);
+            System.out.println(rowsAffected+ " rows have been updated");
+
+        }
+
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+
+    }
 
     public Admin(String username, String name) {
         this.username = username;
@@ -217,7 +265,7 @@ public class Admin extends database {
                 Connection connection = DriverManager.getConnection(url, user, pw);
                 Statement statement = connection.createStatement();
         ) {
-            String query = "select * from Connection_req where status='pending'";
+            String query = "select * from connection_req where status='pending'";
             ResultSet result = statement.executeQuery(query);
 
 
