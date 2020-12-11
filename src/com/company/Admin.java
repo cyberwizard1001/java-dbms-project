@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 
-public class Admin {
+public class Admin  {
     String name;
     String username;
     String password;
@@ -78,7 +78,6 @@ public class Admin {
         try (
                 Connection connection = DriverManager.getConnection(url, user, pw);
 
-
                 Statement statement = connection.createStatement();
 
         ) {
@@ -104,7 +103,7 @@ public class Admin {
 
 
     //adding employee function:
-    public void addemp() throws SQLException {
+    public void addemployee() throws SQLException {
 
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
@@ -125,7 +124,7 @@ public class Admin {
             name = input.next();
             System.out.println("enter password");
             password = input.next();
-            System.out.println("enter type");
+            System.out.println("enter type\n1)Water Resource Engineer\n2)System Engineer\n3)Project Engineer");
             user_choice = input.nextInt();
             switch (user_choice) {
                 case 1://wre
@@ -153,15 +152,15 @@ public class Admin {
 
                 //now should insert values into employee table
                 emp_id = "emp" + username;
-                System.out.println("enter date of birth");
+                System.out.println("enter date of birth (Format: YYYY-MM-DD ):");
                 dob = input.next();
-                System.out.println("enter date of join");
+                System.out.println("enter date of join (Format: YYYY-MM-DD ):");
                 doj = input.next();
                 System.out.println("enter salary");
                 salary = input.nextInt();
                 String query1 = "insert into employee values('" + username + "','" + emp_id + "','" + name + "','" + salary + "','" + dob + "','" + doj + "')";
                 InsertInto(query1);
-
+                System.out.println("Employee details has been successfully added!");
             } else {
                 System.out.println("Sorry! Username already exists!");
             }
@@ -170,7 +169,7 @@ public class Admin {
 
     }
     //to get no.of connections from public table
- public void get_noc(String uname,String type ,String lid) {
+ public void updaterelations(String uname,String type ,String lid) {
 
      String url = "jdbc:mysql://localhost:3306/project_trial";
      String pw = "n";
@@ -256,7 +255,7 @@ public class Admin {
 
     //adding a new connection
 
-    public void addconnec(){
+    public void addconnection(){
         String url = "jdbc:mysql://localhost:3306/project_trial";
         String pw = "n";
         String user = "root";
@@ -275,9 +274,7 @@ public class Admin {
                 String lid=result.getString("location_id");
                 String sts=result.getString("status");
 
-                get_noc(uname,type,lid);
-
-
+                updaterelations(uname,type,lid);
 
             }
 
@@ -286,9 +283,9 @@ public class Admin {
             throwables.printStackTrace();
         }
 
-
-
     }
+
+
 
     public void Console() throws SQLException {
 
@@ -299,7 +296,6 @@ public class Admin {
         System.out.println("(1)Assign complaints to Engineers");
         System.out.println("(2)Add Employee");
         System.out.println("(3)Add Connection");
-        //System.out.println("(5)Remove Connection");
         System.out.println("(4)Sign out");
 
         System.out.print("\n\nWhat work do you have? : ");
@@ -311,15 +307,16 @@ public class Admin {
                 complaint_obj.assigncomplaints(username,name);
                 break;
             case 2:
-                addemp();
-
+                addemployee();
                 break;
 
             case 3:
-                addconnec();
+                addconnection();
                 break;
+
             case 4:
-                login l_ob=new login();
+                login login_obj= new login();
+                login_obj.Login();
                 break;
 
             default:

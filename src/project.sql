@@ -217,6 +217,7 @@ create table connection_req(
     primary key (username),
     foreign key (location_id) references area(location_id)
 );
+
 -- insert into connection_req values('public1',)
 
 -- drop table connection_req;
@@ -424,6 +425,8 @@ select * from purification;
 select * from property;
 select * from employee;
 
+
+select * from public;
 select * from connection;
 select * from connection_req;
 select * from public_connection;
